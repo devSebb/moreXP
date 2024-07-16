@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cover_letter: MyText
+  user: one
+  job: one
+
+two:
+  cover_letter: MyText
+  user: two
+  job: two

@@ -1,0 +1,10 @@
+<nav class="border-gray-600 border-b-2">
+<div class="flex justify-between mx-auto px-3">
+<%= link_to "moreXP", root_path %>
+  <ul class="justify-between space-x-2">
+    <%= link_to "Browse", jobs_path, data: { turbo_method: :get } %>
+    <%= link_to "New Job", new_job_path, data: { turbo_method: :get } %>
+    <%= link_to "Log In", new_user_session_path, data: { turbo_method: :get } %>
+  </ul>
+</div>
+</nav>
