@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Junior UI/UX Developer",
+    "description": "This job requires knowledge in CSS, HTML, Tailwind and Ruby on Rails",
+    "company_name": "SoftwareGig.inc",
+    "tags": "remote",
+    "location": "Seattle, WA",
+    "price": "1000"
+  },
+  {
+    "title": "Assistant Camera crew",
+    "description": "This job requires knowledge in CSS, HTML, Tailwind and Ruby on Rails",
+    "company_name": "CameraGig.inc",
+    "tags": "hybrid",
+    "location": "Redmond, WA",
+    "price": "800"
+  },
+  {
+    "title": "Assistant Stylist",
+    "description": "This job requires knowledge in CSS, HTML, Tailwind and Ruby on Rails",
+    "company_name": "Styling World PNW",
+    "tags": "full time",
+    "location": "Portland, OR",
+    "price": "1100"
+  },
+  {
+    "title": "Junior UI/UX Developer",
+    "description": "This job requires knowledge in CSS, HTML, Tailwind and Ruby on Rails",
+    "company_name": "SoftwareGig.inc",
+    "tags": "remote",
+    "location": "Indianapolis, IN",
+    "price": "1250"
+  }
+]

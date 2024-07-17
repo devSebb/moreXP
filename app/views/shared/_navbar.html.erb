@@ -4,7 +4,11 @@
   <ul class="justify-between space-x-2">
     <%= link_to "Browse", jobs_path, data: { turbo_method: :get } %>
     <%= link_to "New Job", new_job_path, data: { turbo_method: :get } %>
-    <%= link_to "Log In", new_user_session_path, data: { turbo_method: :get } %>
+    <% if user_signed_in? %>
+      <%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete } %>
+    <% else %>
+      <%= link_to "Log In", new_user_session_path, data: { turbo_method: :get } %>
+    <% end %>
   </ul>
 </div>
 </nav>
