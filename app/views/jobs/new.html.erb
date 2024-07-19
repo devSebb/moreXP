@@ -1,136 +1,68 @@
 <div class="flex items-center justify-center p-12">
   <div class="mx-auto w-full max-w-[550px]">
-    <form action="https://formbold.com/s/FORM_ID" method="POST">
+    <%= form_with(model: Job.new, url: jobs_path, method: "post") do |form| %>
       <div class="-mx-3 flex flex-wrap">
         <div class="w-full px-3 sm:w-1/2">
           <div class="mb-5">
-            <label
-              for="fName"
-              class="mb-3 block text-base font-medium text-[#07074D]"
-            >
-              Job Title
-            </label>
-            <input
-              type="text"
-              name="fName"
-              id="fName"
-              placeholder="Job Title"
-              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-            />
+            <%= form.label :title, "Job Title", class: "mb-3 block text-base font-medium text-[#07074D]" %>
+            <%= form.text_field :title, placeholder: "Job Title", class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
           </div>
         </div>
         <div class="w-full px-3 sm:w-1/2">
           <div class="mb-5">
-            <label
-              for="lName"
-              class="mb-3 block text-base font-medium text-[#07074D]"
-            >
-              Company Name
-            </label>
-            <input
-              type="text"
-              name="lName"
-              id="lName"
-              placeholder="Company Name"
-              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="mb-5">
-        <label
-          for="detail"
-          class="mb-3 block text-base font-medium text-[#07074D]"
-        >
-          Detailed job description
-        </label>
-        <input
-          type="text"
-          name="detail"
-          id="detail"
-          placeholder="Enter details about the job"
-          class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-        />
-      </div>
-
-      <div class="-mx-3 flex flex-wrap">
-        <div class="w-full px-3 sm:w-1/2">
-          <div class="mb-5">
-            <label
-              for="start-date"
-              class="mb-3 block text-base font-medium text-[#07074D]"
-            >
-              Start Date
-            </label>
-            <input
-              type="date"
-              name="start-date"
-              id="start-date"
-              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-            />
-          </div>
-        </div>
-        <div class="w-full px-3 sm:w-1/2">
-          <div class="mb-5">
-            <label
-              for="end-date"
-              class="mb-3 block text-base font-medium text-[#07074D]"
-            >
-              End Date
-            </label>
-            <input
-              type="date"
-              name="end-date"
-              id="end-date"
-              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-            />
+            <%= form.label :company_name, "Company Name", class: "mb-3 block text-base font-medium text-[#07074D]" %>
+            <%= form.text_field :company_name, placeholder: "Company Name", class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
           </div>
         </div>
       </div>
 
       <div class="mb-5">
-        <label class="mb-3 block text-base font-medium text-[#07074D]">
-          Time commitment
-        </label>
+        <%= form.label :description, "Detailed job description", class: "mb-3 block text-base font-medium text-[#07074D]" %>
+        <%= form.text_field :description, placeholder: "Enter details about the job", class: "w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+      </div>
+
+      <div class="-mx-3 flex flex-wrap">
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <%= form.label :start_date, "Start Date", class: "mb-3 block text-base font-medium text-[#07074D]" %>
+            <%= form.date_field :start_date, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+          </div>
+        </div>
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <%= form.label :end_date, "End Date", class: "mb-3 block text-base font-medium text-[#07074D]" %>
+            <%= form.date_field :end_date, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-5">
+        <%= form.label :price, "Price", class: "mb-3 block text-base font-medium text-[#07074D]" %>
+        <%= form.text_field :price, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+      </div>
+
+      <div class="mb-5">
+        <%= form.label :location, "Location", class: "mb-3 block text-base font-medium text-[#07074D]" %>
+        <%= form.text_field :location, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+      </div>
+
+      <div class="mb-5">
+        <%= form.label :time_commitment, "Time commitment", class: "mb-3 block text-base font-medium text-[#07074D]" %>
         <div class="flex items-center space-x-6">
           <div class="flex items-center">
-            <input
-              type="radio"
-              name="radio1"
-              id="radioButton1"
-              class="h-5 w-5"
-            />
-            <label
-              for="radioButton1"
-              class="pl-3 text-base font-medium text-[#07074D]"
-            >
-              Full-time
-            </label>
+            <%= form.radio_button :time_commitment, "full-time", id: "radioButton1", class: "h-5 w-5" %>
+            <%= form.label :time_commitment, "Full-time", for: "radioButton1", class: "pl-3 text-base font-medium text-[#07074D]" %>
           </div>
           <div class="flex items-center">
-            <input
-              type="radio"
-              name="radio1"
-              id="radioButton2"
-              class="h-5 w-5"
-            />
-            <label
-              for="radioButton2"
-              class="pl-3 text-base font-medium text-[#07074D]"
-            >
-              Part-time
-            </label>
+            <%= form.radio_button :time_commitment, "part-time", id: "radioButton2", class: "h-5 w-5" %>
+            <%= form.label :time_commitment, "Part-time", for: "radioButton2", class: "pl-3 text-base font-medium text-[#07074D]" %>
           </div>
         </div>
       </div>
 
       <div>
-        <button
-          class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
-        >
-          Submit
-        </button>
+        <%= form.submit "Submit", class: "hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none" %>
       </div>
-    </form>
+    <% end %>
   </div>
 </div>

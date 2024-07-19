@@ -3,9 +3,22 @@ class JobsController < ApplicationController
     @jobs = Job.all
   end
 
-  def show
+  def new
+    @job = Job.new
   end
 
-  def new
+  def create
+    @job = Job.new(job_params)
+    if @job.save
+      redirect_to jobs_path, notice: 'Job created successfully.'
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def job_params
+    params.require(:job).permit(:title, :company_name, :description, :start_date, :end_date, :price, :location, :time_commitment)
   end
 end
