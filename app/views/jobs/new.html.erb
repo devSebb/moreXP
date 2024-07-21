@@ -62,6 +62,7 @@
 
       <div>
         <%= form.submit "Submit", class: "hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none" %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
       </div>
     <% end %>
   </div>
