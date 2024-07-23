@@ -5,7 +5,9 @@
     "company_name": "SoftwareGig.inc",
     "tags": "remote",
     "location": "Seattle, WA",
-    "price": "1000"
+    "price": "1000",
+    "start_date": "July 28, 2024",
+    "end_date": "August 28, 2024"
   },
   {
     "title": "Assistant Camera crew",
@@ -13,7 +15,9 @@
     "company_name": "CameraGig.inc",
     "tags": "hybrid",
     "location": "Redmond, WA",
-    "price": "800"
+    "price": "800",
+    "start_date": "July 28, 2024",
+    "end_date": "August 28, 2024"
   },
   {
     "title": "Assistant Stylist",
@@ -21,7 +25,9 @@
     "company_name": "Styling World PNW",
     "tags": "full time",
     "location": "Portland, OR",
-    "price": "1100"
+    "price": "1100",
+    "start_date": "July 28, 2024",
+    "end_date": "August 28, 2024"
   },
   {
     "title": "Junior UI/UX Developer",
@@ -29,6 +35,8 @@
     "company_name": "SoftwareGig.inc",
     "tags": "remote",
     "location": "Indianapolis, IN",
-    "price": "1250"
+    "price": "1250",
+    "start_date": "July 28, 2024",
+    "end_date": "August 28, 2024"
   }
 ]
