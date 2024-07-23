@@ -1,6 +1,10 @@
 class JobsController < ApplicationController
   def index
-    @jobs = Job.all
+    if params[:title].present?
+      @jobs = Job.where("title ilike ? ", "%#{params[:title]}%")
+    else
+      @jobs = Job.all
+    end
   end
 
   def new

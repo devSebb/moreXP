@@ -60,10 +60,10 @@
         </div>
       </div>
 
-      <div>
-        <%= form.submit "Submit", class: "hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none" %>
+      <button class= "rounded-md py-3 px-8 text-center font-semibold text-gray-100 bg-primary-orange w-full">
+        <%= form.submit "Submit", class:"hover:cursor-pointer" %>
         <%= form.hidden_field :user_id, value: current_user.id %>
-      </div>
+      </button>
     <% end %>
   </div>
 </div>
