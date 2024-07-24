@@ -25,6 +25,36 @@ class JobsController < ApplicationController
     end
   end
 
+  def add_to_applications
+    job = Job.find(params[:id])
+    current_user.applications.create(job: job)
+
+  end
+
+  def remove_from_applications
+    @application = current_user.applications.find_by(job_id: params[:id])
+
+    if @application.destroy
+      flash[:notice] = 'Job successfully removed from applications.'
+    else
+      flash[:alert] = 'Failed to remove job from applications.'
+    end
+
+    redirect_to jobs_path
+  end
+
+  def destroy
+    @application = current_user.applications.find_by(job_id: @job.id)
+
+    if @application.destroy
+      flash[:notice] = 'Job successfully removed from applications.'
+    else
+      flash[:alert] = 'Failed to remove job from applications.'
+    end
+
+    redirect_to jobs_path
+  end
+
   private
 
   def job_params
