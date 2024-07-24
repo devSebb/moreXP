@@ -43,17 +43,6 @@ class JobsController < ApplicationController
     redirect_to jobs_path
   end
 
-  def destroy
-    @application = current_user.applications.find_by(job_id: @job.id)
-
-    if @application.destroy
-      flash[:notice] = 'Job successfully removed from applications.'
-    else
-      flash[:alert] = 'Failed to remove job from applications.'
-    end
-
-    redirect_to jobs_path
-  end
 
   private
 

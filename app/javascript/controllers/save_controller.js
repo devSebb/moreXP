@@ -11,11 +11,11 @@ export default class extends Controller {
     if (pathElement) {
       if (pathElement.getAttribute("fill") === "#1f2937") {
         pathElement.setAttribute("fill", "orange");
-        // Add the job to the current user's applications
+
         await this.addJobToApplications(jobId);
       } else {
         pathElement.setAttribute("fill", "#1f2937");
-        // Remove the job from the current user's applications
+
         await this.removeJobFromApplications(jobId);
       }
     }
@@ -43,7 +43,7 @@ export default class extends Controller {
 
   async removeJobFromApplications(jobId) {
     try {
-      const response = await fetch(`/jobs/${jobId}/destroy`, {
+      const response = await fetch(`/jobs/${jobId}/remove_from_applications`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
