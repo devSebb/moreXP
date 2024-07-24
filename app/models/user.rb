@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :applications
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
   # Include default devise modules. Others available are:
