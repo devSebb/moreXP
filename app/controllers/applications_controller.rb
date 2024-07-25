@@ -1,7 +1,6 @@
 class ApplicationsController < ApplicationController
   before_action :authenticate_user!
 
-
   def index
     unique_job_ids = current_user.applications.group(:job_id).pluck(:job_id)
     @applications = Job.where(id: unique_job_ids)
