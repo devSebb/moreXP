@@ -1,5 +1,5 @@
 <div class="flex items-center justify-center p-12">
-  <div class="mx-auto w-full max-w-[550px]">
+  <div class="mx-auto w-2/5">
     <%= form_with(model: Job.new, url: jobs_path, method: "post") do |form| %>
       <div class="-mx-3 flex flex-wrap">
         <div class="w-full px-3 sm:w-1/2">
@@ -18,7 +18,7 @@
 
       <div class="mb-5">
         <%= form.label :description, "Detailed job description", class: "mb-3 block text-base font-medium text-gray-300" %>
-        <%= form.text_field :description, placeholder: "Enter details about the job", class: "w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+        <%= form.text_area :description, placeholder: "Enter details about the job", class: "w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
       </div>
 
       <div class="-mx-3 flex flex-wrap">
@@ -37,8 +37,8 @@
       </div>
 
       <div class="mb-5">
-        <%= form.label :price, "Price", class: "mb-3 block text-base font-medium text-gray-300" %>
-        <%= form.text_field :price, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+        <%= form.label :price, "Price per month or job", class: "mb-3 block text-base font-medium text-gray-300" %>
+        <%= form.text_field :price, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md", placeholder:"$" %>
       </div>
 
       <div class="mb-5">
