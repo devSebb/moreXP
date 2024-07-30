@@ -34,24 +34,29 @@
     <div class="text-gray-300 text-lg">$<%= @job.price %> per month</div>
   </div>
 <%# Apply Section %>
-<div class="flex flex-col">
-  <div class="flex flex-row my-3">
-    <div class="pr-2">
-      <label class="block mb-2 text-sm  text-gray-300" for="file_input">Upload Resume</label>
-      <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="file_input_help" id="file_input" type="file">
-      <p class="mt-1 text-sm text-gray-500" id="file_input_help">.doc, .docx, .pdf, .html (max. 20mb).</p>
+<%= form_with(model: Application.new, url: applications_path, method: "post", multipart: true) do |form| %>
+    <div class="flex flex-col">
+      <div class="flex flex-row my-3">
+        <div class="pr-2">
+          <%= form.label :resume, "Upload Resume", class:"block mb-2 text-sm  text-gray-300"  %>
+          <%= form.file_field :resume, class:"block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" %>
+          <p class="mt-1 text-sm text-gray-500" id="file_input_help">.doc, .docx, .pdf, .html (max. 20mb).</p>
+        </div>
+        <div class="pr-2">
+          <%= form.label :cover_letter, "Upload Cover Letter", class:"block mb-2 text-sm  text-gray-300"  %>
+          <%= form.file_field :cover_letter, class:"block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" %>
+          <p class="mt-1 text-sm text-gray-500" id="file_input_help">.doc, .docx, .pdf, .html (max. 20mb).</p>
+        </div>
+      </div>
+      <%= form.label :personal_message, "Personal Message (optional)", class:"block mb-2 text-sm text-gray-300" %>
+      <%= form.text_area :personal_message, class:"block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-orange focus:border-primary-orange "  %>
     </div>
-    <div class="pl-2">
-      <label class="block mb-2 text-sm  text-gray-300 " for="file_input">Upload Cover letter</label>
-      <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="file_input_help" id="file_input" type="file">
-      <p class="mt-1 text-sm text-gray-500" id="file_input_help">.doc, .docx, .pdf, .html (max. 20mb).</p>
+<%# Button %>
+    <div class="w-full justify-center text-center my-2">
+      <button class= "px-6 py-2 rounded-full bg-primary-orange text-gray-100 my-4 font-semibold w-1/2">
+          <%= form.submit "Apply", class:"hover:cursor-pointer" %>
+          <%= form.hidden_field :user_id, value: current_user.id %>
+          <%= form.hidden_field :job_id, value: @job.id %>
+      </button>
     </div>
-  </div>
-  <label for="message" class="block mb-2 text-sm text-gray-300">Your message (optional)</label>
-  <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-orange focus:border-primary-orange " placeholder="Write a personal message to the employer..."></textarea>
-</div>
-<%# Apply Button %>
-  <div class="w-full justify-center text-center my-2">
-    <button class="px-6 py-2 rounded-full bg-primary-orange text-gray-100 my-4 font-semibold w-1/2">Apply</button>
-  </div>
-</div>
+<% end %>

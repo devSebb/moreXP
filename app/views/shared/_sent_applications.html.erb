@@ -1,0 +1,14 @@
+<div class="flex flex-col w-1/2">
+        <% @applications.each do |application| %>
+          <% if application.resume.attached? && user_signed_in? %>
+            <%= application.job.id %>
+            <%= application.job.title%>
+            <%= application.user.id%>
+            <%= application.user.name%>
+            <%= link_to 'Download Resume', url_for(application.resume), download: application.resume.filename.to_s %>
+            <%= link_to 'Download Cover Letter', url_for(application.cover_letter), download: application.cover_letter.filename.to_s %>
+          <% else %>
+            <p>No sent applications to show, <%= link_to "Browse", jobs_path, data: { turbo_method: :get }, class:"hover:text-primary-orange" %> jobs to find your next experience opportunity!</p>
+          <% end %>
+        <% end %>
+      </div>

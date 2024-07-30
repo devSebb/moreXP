@@ -7,18 +7,18 @@
     <div class="space-y-2">
       <div class="field text-gray-300">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"w-full rounded-lg"  %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"w-full rounded-lg text-gray-900"  %>
       </div>
       <div class="field text-gray-300">
         <%= f.label :password %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class:"w-full rounded-lg"  %>
+        <%= f.password_field :password, autocomplete: "new-password", class:"w-full rounded-lg text-gray-900"  %>
       </div>
       <div class="field text-gray-300">
         <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"w-full rounded-lg"  %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"w-full rounded-lg text-gray-900"  %>
       </div>
     </div>
 

@@ -6,21 +6,30 @@ class ApplicationsController < ApplicationController
     @applications = Job.where(id: unique_job_ids)
   end
 
+  def show
+    @applications = current_user.applications.includes(:job, :user)
+  end
 
   def create
-    @job = Job.find(params[:job_id])
-    @application = Application.new(job: @job, user: current_user)
+    @application = Application.new(application_params)
+
+    @job = Job.find_by(id: @application.job_id)
+    if @job.nil?
+      redirect_to jobs_path, alert: "Job not found"
+      return
+    end
 
     if @application.save
-      flash[:notice] = "Job added to applications successfully."
+      redirect_to job_path(@job), notice: 'Application submitted successfully.'
     else
-      flash[:alert] = "Failed to add job to applications."
+      @job = Job.find(@application.job_id)
+      render 'jobs/show'
     end
   end
 
   private
 
   def application_params
-    params.require(:application).permit(:job_id, :company_name)
+    params.require(:application).permit(:job_id, :user_id, :company_name, :resume, :cover_letter, :personal_message)
   end
 end
