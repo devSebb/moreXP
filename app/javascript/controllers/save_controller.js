@@ -11,39 +11,37 @@ export default class extends Controller {
     if (pathElement) {
       if (pathElement.getAttribute("fill") === "#1f2937") {
         pathElement.setAttribute("fill", "orange");
-
-        await this.addJobToApplications(jobId);
+        await this.addJobToBookmarks(jobId);
       } else {
         pathElement.setAttribute("fill", "#1f2937");
-
-        await this.removeJobFromApplications(jobId);
+        await this.removeJobFromBookmarks(jobId);
       }
     }
   }
 
-  async addJobToApplications(jobId) {
+  async addJobToBookmarks(jobId) {
     try {
-      const response = await fetch(`/jobs/${jobId}/add_to_applications`, {
+      const response = await fetch(`/bookmarks`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        }
+        },
+        body: JSON.stringify({ job_id: jobId })
       });
 
       if (!response.ok) {
-        throw new Error('Failed to add job to applications');
+        throw new Error('Failed to add job to bookmarks');
       }
 
-      // Optionally handle success
     } catch (error) {
-      console.error('Error adding job to applications:', error);
+      console.error('Error adding job to bookmarks:', error);
     }
   }
 
-  async removeJobFromApplications(jobId) {
+  async removeJobFromBookmarks(jobId) {
     try {
-      const response = await fetch(`/jobs/${jobId}/remove_from_applications`, {
+      const response = await fetch(`/bookmarks/${this.bookmarkId}/remove/${jobId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -52,10 +50,10 @@ export default class extends Controller {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to remove job from applications');
+        throw new Error('Failed to remove job from bookmarks');
       }
     } catch (error) {
-      console.error('Error removing job from applications:', error);
+      console.error('Error removing job from bookmarks:', error);
     }
   }
 }

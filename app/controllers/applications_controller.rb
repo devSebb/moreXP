@@ -2,8 +2,7 @@ class ApplicationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    unique_job_ids = current_user.applications.group(:job_id).pluck(:job_id)
-    @applications = Job.where(id: unique_job_ids)
+    @applications = current_user.applications.includes(:job, :user)
   end
 
   def show
@@ -13,6 +12,8 @@ class ApplicationsController < ApplicationController
   def create
     @application = Application.new(application_params)
 
+    @application.applied_to = true
+
     @job = Job.find_by(id: @application.job_id)
     if @job.nil?
       redirect_to jobs_path, alert: "Job not found"
@@ -20,6 +21,9 @@ class ApplicationsController < ApplicationController
     end
 
     if @application.save
+
+      @applications = current_user.applications.where(applied_to: true)
+
       redirect_to job_path(@job), notice: 'Application submitted successfully.'
     else
       @job = Job.find(@application.job_id)
@@ -27,9 +31,10 @@ class ApplicationsController < ApplicationController
     end
   end
 
+
   private
 
   def application_params
-    params.require(:application).permit(:job_id, :user_id, :company_name, :resume, :cover_letter, :personal_message)
+    params.require(:application).permit(:job_id, :user_id, :company_name, :resume, :cover_letter, :personal_message, :applied_to)
   end
 end

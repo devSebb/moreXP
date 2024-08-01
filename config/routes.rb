@@ -2,12 +2,15 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :jobs, only: %i[index new create show] do
-    resources :applications, only: [:create]
-    post :add_to_applications, on: :member
-    delete :remove_from_applications, on: :member
+    resources :applications, only: [:create, :index]
   end
 
-  resources :users, only: [:show]
+  resources :bookmarks, only: [:index, :create] do
+    delete 'remove/:job_id', to: 'bookmarks#destroy', as: :remove
+  end
+
+
+  resources :users, only: [:show, :update, :edit]
 
   resources :applications, only: [:index, :create, :show]
 

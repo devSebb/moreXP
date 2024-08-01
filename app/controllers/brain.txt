@@ -30,3 +30,17 @@
           </div>
         <% end %>
       </div>
+
+
+
+
+Form for editing
+
+<div class="field text-gray-300">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"w-full rounded-lg text-gray-900" %>
+      </div>
+      <div class="field text-gray-300">
+        <%= f.label :location %><br />
+        <%= f.text_field :location, autofocus: true, autocomplete: "location", class:"w-full rounded-lg text-gray-900" %>
+      </div>

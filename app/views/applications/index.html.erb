@@ -1,10 +1,1 @@
-<%# Cart/Saved Jobs Section %>
-<div class="mt-2">
-  <div class="flex justify-between">
-    <div class="ml-36 font-semibold text-3xl text-gray-300 z-20">Your Saved Jobs</div>
-    <%= link_to "Sent Applications", application_path(@applications), class: "text-white", data: { turbo_method: :get } %>
-  </div>
-    <div class="flex flex-row">
-      <%= render 'shared/saved_jobs', application: @application %>
-      </div>
-    </div>
+<%= render 'shared/sent_applications', application: @application %>
