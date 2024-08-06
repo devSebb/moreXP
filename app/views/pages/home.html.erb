@@ -1,7 +1,10 @@
+<%# Hero %>
 <section class="bg-transparent">
+  <%= image_tag("Arrow_Up_L.png", class: "absolute transform h-[340px] -right-[25px] top-[70px] z-0", alt: "Arrow Up") %>
+  <%= image_tag("Atom_Sphere_1__L.png", class: "absolute transform h-[400px] left-[5px] top-[280px] z-0 rotate-[30deg]", alt: "Arrow Up") %>
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
-        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-300 md:text-5xl lg:text-6xl ">It’s time to level up</h1>
-        <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">Its impossible to find a job without experience. It's impossible to get experience without a job. We're here to help you break into the industry.</p>
+        <h1 class="mb-4 font-extrabold tracking-tight leading-none text-gray-300 text-7xl z-2">It’s time to level up</h1>
+        <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl px-60">Its impossible to find a job without experience. It's impossible to get experience without a job.<br> We're here to help you break into the industry.</p>
         <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
             <a href="<%= new_user_session_path %>" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-orange hover:bg-orange-400 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
                 Get started
@@ -15,3 +18,25 @@
         </div>
     </div>
 </section>
+<%# Steps %>
+<section>
+  <div class="flex my-32 mx-10 h-80 rounded-3xl bg-gradient-to-b from-slate-600 via-slate-400 to-slate-200 z-30">
+    <div class="flex flex-row mx-10 my-10 justify-between w-full relative z-30">
+      <%= image_tag("Arrow Up Icon.svg", class: "absolute w-[480px] left-[240px] -top-[100px] z-10 rotate-[20deg]", alt: "Arrow Up") %>
+      <%# Step 1 %>
+      <div class="flex bg-gray-200 bg-opacity-70 rounded-2xl shadow-2xl p-3 w-1/4 items-center shadow-custom-blue z-30">
+        <h1 class="text-2xl text-center font-special text-custom-blue">Browse through hundreds of professional experiences</h1>
+      </div>
+      <%# Step 2 %>
+      <div class="flex bg-gray-200 bg-opacity-70 rounded-2xl shadow-2xl p-3 w-1/4 items-center shadow-custom-blue z-30">
+        <h1 class="text-2xl text-center font-special text-custom-blue">Apply to the top experiences to impulse your career</h1>
+      </div>
+      <%# Step 3 %>
+      <div class="flex bg-gray-200 bg-opacity-70 rounded-2xl shadow-2xl p-3 w-1/4 items-center shadow-custom-blue z-30">
+        <h1 class="text-2xl text-center font-special text-custom-blue">Level yourself up and break into the industry</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= render "shared/footer" %>

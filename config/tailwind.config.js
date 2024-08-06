@@ -12,9 +12,11 @@ module.exports = {
     extend: {
       colors: {
         'primary-orange': '#F59033',
+        'custom-blue': 'rgb(4, 39, 62)'
       },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        special: ['Archivo', 'sans-serif']
       },
     },
   },
