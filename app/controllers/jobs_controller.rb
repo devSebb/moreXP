@@ -1,9 +1,11 @@
 class JobsController < ApplicationController
   def index
+    @jobs = Job.all
     if params[:title].present?
       @jobs = Job.where("title ilike ? ", "%#{params[:title]}%")
-    else
-      @jobs = Job.all
+    end
+    if params[:location].present?
+      @jobs = @jobs.where("location ILIKE ?", "%#{params[:location]}%")
     end
   end
 
@@ -29,6 +31,6 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :company_name, :description, :start_date, :end_date, :price, :location, :time_commitment)
+    params.require(:job).permit(:title, :company_name, :description, :start_date, :end_date, :price, :location, :time_commitment, :industry)
   end
 end

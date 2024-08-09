@@ -44,3 +44,79 @@ Form for editing
         <%= f.label :location %><br />
         <%= f.text_field :location, autofocus: true, autocomplete: "location", class:"w-full rounded-lg text-gray-900" %>
       </div>
+
+
+
+
+For Sent Applications OG
+
+<div class="flex flex-col w-1/2 text-white">
+  <% if @applications.any? %>
+    <% @applications.each do |application| %>
+      <% if application.applied_to? && user_signed_in? %>
+        <div>
+          <% if application.job.present? %>
+            <div>Job ID: <%= application.job.id %></div>
+            <div>Job Title: <%= application.job.title %></div>
+          <% else %>
+            <div>Job information not available</div>
+          <% end %>
+
+          <% if application.user.present? %>
+            <div>User ID: <%= application.user.id %></div>
+            <div>User Name: <%= application.user.name %></div>
+          <% else %>
+            <div>User information not available</div>
+          <% end %>
+
+         <% if application.personal_message.present? %>
+            <div>Personal Message: <%= application.personal_message %></div>
+         <% else %>
+            <div>No Personal Message</div>
+         <% end %>
+
+          <% if application.resume.present? %>
+            <div>
+              <%= link_to 'Download Resume', url_for(application.resume), download: application.resume.filename.to_s %>
+            </div>
+          <% else %>
+            <div>Resume not available</div>
+          <% end %>
+
+          <% if application.cover_letter.present? %>
+            <div>
+              <%= link_to 'Download Cover Letter', url_for(application.cover_letter), download: application.cover_letter.filename.to_s %>
+            </div>
+          <% else %>
+            <div>Cover letter not available</div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <div class="w-screen mx-auto pt-20 content-center text-3xl text-center">
+      <h1>No sent applications to show,<br> <%= link_to "Browse", jobs_path, data: { turbo_method: :get }, class: "text-primary-orange hover:text-gray-300" %> jobs to find your next experience opportunity!</h1>
+    </div>
+  <% end %>
+</div>
+ //////////////////
+
+
+ <div class="mb-5">
+        <%= form.label :time_commitment, "Time commitment", class: "mb-3 block text-base font-medium text-gray-300" %>
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <%= form.radio_button :time_commitment, "full-time", id: "radioButton1", class: "h-5 w-5" %>
+            <%= form.label :time_commitment, "Full-time", for: "radioButton1", class: "pl-3 text-base font-medium text-gray-300" %>
+          </div>
+          <div class="flex items-center">
+            <%= form.radio_button :time_commitment, "part-time", id: "radioButton2", class: "h-5 w-5" %>
+            <%= form.label :time_commitment, "Part-time", for: "radioButton2", class: "pl-3 text-base font-medium text-gray-300" %>
+          </div>
+        </div>
+      </div>
+\
+
+
+///////
+bg-gradient-to-b from-custom-blue via-slate-500 to-slate-300 z-30 rounded-b-3xl

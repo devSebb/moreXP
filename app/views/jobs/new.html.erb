@@ -46,21 +46,50 @@
         <%= form.text_field :location, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
       </div>
 
-      <div class="mb-5">
-        <%= form.label :time_commitment, "Time commitment", class: "mb-3 block text-base font-medium text-gray-300" %>
-        <div class="flex items-center space-x-6">
-          <div class="flex items-center">
-            <%= form.radio_button :time_commitment, "full-time", id: "radioButton1", class: "h-5 w-5" %>
-            <%= form.label :time_commitment, "Full-time", for: "radioButton1", class: "pl-3 text-base font-medium text-gray-300" %>
-          </div>
-          <div class="flex items-center">
-            <%= form.radio_button :time_commitment, "part-time", id: "radioButton2", class: "h-5 w-5" %>
-            <%= form.label :time_commitment, "Part-time", for: "radioButton2", class: "pl-3 text-base font-medium text-gray-300" %>
-          </div>
-        </div>
-      </div>
+      <%# Dropdown Button %>
+      <%= form.label :industry, "Industry", class: "mb-3 block text-base font-medium text-gray-300" %>
+      <button id="dropdownDefaultButton" data-dropdown-toggle="industry" class="flex justify-between w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" type="button">Industry
+        <svg class="w-2.5 h-2.5 items-center align-middle my-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+        </svg>
+      </button>
 
-      <button class= "rounded-md py-3 px-8 text-center font-semibold text-gray-100 bg-primary-orange w-full">
+      <!-- Dropdown menu -->
+      <div id="industry" class="z-10 hidden bg-white divide-x divide-gray-300 rounded-lg shadow w-2/5 dark:bg-gray-700">
+          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                onclick="document.getElementById('industry_input').value = 'Dashboard';">Software Development</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                onclick="document.getElementById('industry_input').value = 'Dashboard';">Finance & Accounting</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                onclick="document.getElementById('industry_input').value = 'Dashboard';">Architecture</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                onclick="document.getElementById('industry_input').value = 'Dashboard';">Marketing & Graphic Design</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                onclick="document.getElementById('industry_input').value = 'Settings';">Photography</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                onclick="document.getElementById('industry_input').value = 'Earnings';">Fashion</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                onclick="document.getElementById('industry_input').value = 'Sign out';">Video & Film</a>
+            </li>
+          </ul>
+      </div>
+      <%= form.hidden_field :industry, id: "industry_input" %>
+
+      <button class= "rounded-md py-3 px-8 mt-5 text-center font-semibold text-gray-100 bg-primary-orange w-full">
         <%= form.submit "Submit", class:"hover:cursor-pointer" %>
         <%= form.hidden_field :user_id, value: current_user.id %>
       </button>

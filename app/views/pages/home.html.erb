@@ -1,8 +1,10 @@
 <%# Hero %>
 <section class="bg-transparent">
-  <%= image_tag("Arrow_Up_L.png", class: "absolute transform h-[340px] -right-[25px] top-[70px] z-0", alt: "Arrow Up") %>
-  <%= image_tag("Atom_Sphere_1__L.png", class: "absolute transform h-[400px] left-[5px] top-[280px] z-0 rotate-[30deg]", alt: "Arrow Up") %>
-    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+  <%= image_tag("Scribble arrow.svg", class: "absolute transform h-[160px] right-48 top-[420px] rotate-[30deg]", alt: "Scribble") %>
+  <%= image_tag("Scribble.svg", class: "absolute transform h-[140px] left-16 top-28 z-0 ", alt: "Scribble 2") %>
+  <%= image_tag("Side Head Lightbulb.svg", class: "absolute transform h-[120px] left-40 top-[450px] z-0 -rotate-[60deg]", alt: "Exclamation Head") %>
+  <%= image_tag("Hand Drawn Bars Graphic.svg", class: "absolute transform h-[100px] right-10 top-40 z-0", alt: "BarChart") %>
+    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center my-28">
         <h1 class="mb-4 font-extrabold tracking-tight leading-none text-gray-300 text-7xl z-2">It’s time to level up</h1>
         <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl px-60">Its impossible to find a job without experience. It's impossible to get experience without a job.<br> We're here to help you break into the industry.</p>
         <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
@@ -20,20 +22,22 @@
 </section>
 <%# Steps %>
 <section>
-  <div class="flex my-32 mx-10 h-80 rounded-3xl bg-gradient-to-b from-slate-600 via-slate-400 to-slate-200 z-30">
-    <div class="flex flex-row mx-10 my-10 justify-between w-full relative z-30">
-      <%= image_tag("Arrow Up Icon.svg", class: "absolute w-[480px] left-[240px] -top-[100px] z-10 rotate-[20deg]", alt: "Arrow Up") %>
+  <div class="flex mt-36 mb-40 h-[500px]">
+    <%= image_tag("Arrow_Up_L.png", class: "absolute transform h-[340px] right-[40px] top-[750px] z-0", alt: "Arrow Up") %>
+    <%= image_tag("Atom_Sphere_1__L.png", class: "absolute top-[560px] transform h-[400px] z-0 rotate-[30deg]", alt: "Arrow Up")  %>
+    <div class="flex flex-col  justify-between w-full">
+
       <%# Step 1 %>
-      <div class="flex bg-gray-200 bg-opacity-70 rounded-2xl shadow-2xl p-3 w-1/4 items-center shadow-custom-blue z-30">
-        <h1 class="text-2xl text-center font-special text-custom-blue">Browse through hundreds of professional experiences</h1>
+      <div class="w-1/2 flex flex-row items-end ml-[420px]">
+        <h1 class="text-4xl text-right font-special text-primary-orange">Browse through hundreds of professional experiences</h1>
       </div>
       <%# Step 2 %>
-      <div class="flex bg-gray-200 bg-opacity-70 rounded-2xl shadow-2xl p-3 w-1/4 items-center shadow-custom-blue z-30">
-        <h1 class="text-2xl text-center font-special text-custom-blue">Apply to the top experiences to impulse your career</h1>
+      <div class="flex bg-transparent rounded-2xl w-1/2 items-center ml-20 mt-20">
+        <h1 class="text-4xl text-start font-special text-primary-orange">Apply to the top experiences to impulse your career</h1>
       </div>
       <%# Step 3 %>
-      <div class="flex bg-gray-200 bg-opacity-70 rounded-2xl shadow-2xl p-3 w-1/4 items-center shadow-custom-blue z-30">
-        <h1 class="text-2xl text-center font-special text-custom-blue">Level yourself up and break into the industry</h1>
+      <div class="flex bg-transparent rounded-2xl w-2/3 items-center mx-auto">
+        <h1 class="text-4xl text-center font-special text-primary-orange ">Level yourself up and break into the industry</h1>
       </div>
     </div>
   </div>

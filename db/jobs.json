@@ -7,7 +7,8 @@
     "location": "Seattle, WA",
     "price": "1000",
     "start_date": "July 28, 2024",
-    "end_date": "August 28, 2024"
+    "end_date": "August 28, 2024",
+    "industry": "Software Development"
   },
   {
     "title": "Assistant Camera crew",
@@ -17,7 +18,8 @@
     "location": "Redmond, WA",
     "price": "800",
     "start_date": "July 28, 2024",
-    "end_date": "August 28, 2024"
+    "end_date": "August 28, 2024",
+    "industry": "Video & Film"
   },
   {
     "title": "Assistant Stylist",
@@ -27,16 +29,51 @@
     "location": "Portland, OR",
     "price": "1100",
     "start_date": "July 28, 2024",
-    "end_date": "August 28, 2024"
+    "end_date": "August 28, 2024",
+    "industry": "Fashion"
   },
   {
-    "title": "Junior UI/UX Developer",
-    "description": "This job requires knowledge in CSS, HTML, Tailwind and Ruby on Rails",
-    "company_name": "SoftwareGig.inc",
+    "title": "Assistant Graphic Designer",
+    "description": "The Job requires experience in Photoshop and illustrator. Will be working directly with the creative director adding details to industrial design projects for a major furniture store. Tasks will be given based on performance of the first two weeks as well as portfolio experience. Please add portfolio link in personal message section.",
+    "company_name": "Irminis Living",
     "tags": "remote",
     "location": "Indianapolis, IN",
+    "price": "900",
+    "start_date": "August 28, 2024",
+    "end_date": "October 28, 2024",
+    "industry": "Marketing & Graphic Design"
+  },
+  {
+    "title": "Archicad junior designer",
+    "description": "The job requires basic knowledge on Archicad for designing basic floor plans and ideally 3d structures. Will be working alongside a senior architect. Will be given tasks depending on completion of these. Will shadow and repeat steps already done in the project for proof of knowledge",
+    "company_name": "Architects Anonymous",
+    "tags": "remote",
+    "location": "New York, NY",
     "price": "1250",
-    "start_date": "July 28, 2024",
-    "end_date": "August 28, 2024"
+    "start_date": "August 28, 2024",
+    "end_date": "October 28, 2024",
+    "industry": "Architecture"
+  },
+  {
+    "title": "Startup Accounting Intern",
+    "description": "The tasks to be completed during the job period are the following but not limited to: bookeeping, cleaning previouse accounting period spreadshits, data analysis, tax records analysis, balance sheets reviews, etc. Requires exceptional attention to detail. This is a full time job. ",
+    "company_name": "Mildreds Inc",
+    "tags": "full-time",
+    "location": "Chicago, IL",
+    "price": "980",
+    "start_date": "August 28, 2024",
+    "end_date": "October 28, 2024",
+    "industry": "Finance & Accounting"
+  },
+  {
+    "title": "Photography Assistant",
+    "description": "Needed for a 4 week project including around 6 photoshoots. Requires knowledge in professional photography, lighting, and product photography as well as model photography. Will be interacting with professional photographers and tagging along with them during the shoots as well as the editing of the content. This is a part time job on-site.",
+    "company_name": "PhotoGenie NOLA",
+    "tags": "on-site",
+    "location": "New Orleans, LA",
+    "price": "700",
+    "start_date": "August 28, 2024",
+    "end_date": "October 28, 2024",
+    "industry": "Photography"
   }
 ]

@@ -16,7 +16,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-        special: ['Archivo', 'sans-serif']
+        special: ['Permanent Marker', 'sans-serif']
       },
     },
   },

@@ -14,7 +14,8 @@ ActiveRecord::Base.transaction do
       location: params["location"],
       price: params["price"],
       start_date: params["start_date"],
-      end_date: params["end_date"]
+      end_date: params["end_date"],
+      industry: params["industry"]
     )
     puts "#{job.title} created"
   end

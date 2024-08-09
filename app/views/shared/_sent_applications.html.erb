@@ -1,48 +1,46 @@
-<div class="flex flex-col w-1/2 text-white">
+<div class="mt-4">
   <% if @applications.any? %>
+  <div class="font-semibold text-3xl text-gray-300 z-20 mx-36">Sent Applications</div>
     <% @applications.each do |application| %>
-      <% if application.applied_to? && user_signed_in? %>
-        <div>
-          <% if application.job.present? %>
-            <div>Job ID: <%= application.job.id %></div>
-            <div>Job Title: <%= application.job.title %></div>
-          <% else %>
-            <div>Job information not available</div>
-          <% end %>
-
-          <% if application.user.present? %>
-            <div>User ID: <%= application.user.id %></div>
-            <div>User Name: <%= application.user.name %></div>
-          <% else %>
-            <div>User information not available</div>
-          <% end %>
-
-         <% if application.personal_message.present? %>
-            <div>Personal Message: <%= application.personal_message %></div>
-         <% else %>
-            <div>No Personal Message</div>
-         <% end %>
-
-          <% if application.resume.present? %>
-            <div>
-              <%= link_to 'Download Resume', url_for(application.resume), download: application.resume.filename.to_s %>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-3/4 pt-5 mx-auto">
+        <div class="flex flex-col place-content-between p-2 bg-green-100 rounded-lg h-fit" style="color: rgb(4, 39, 62)">
+          <% if application.applied_to? && user_signed_in? %>
+            <div class="">
+              <% if application.job.present? %>
+                <div class="text-xs mb-2 font-light">Applied on: <%= application.created_at.strftime("%b %d, %Y") %></div>
+                <div class="font-light"><%= application.job.company_name %></div>
+                <div class="font-semibold"><%= application.job.title %></div>
+                <div class="flex justify-between mt-2">
+                  <div class="text-sm"><%= application.job.location %></div>
+                  <div class="text-sm">$<%= application.job.price %> /mo</div>
+                </div>
+              <% end %>
+              <div class="text-xs mt-2 font-light">Download:</div>
+              <div class="flex justify-between text-sm">
+                <% if application.resume.present? %>
+                  <div>
+                    <%= link_to 'Resume', url_for(application.resume), download: application.resume.filename.to_s, class:"hover:text-primary-orange" %>
+                  </div>
+                <% end %>
+                <% if application.cover_letter.present? %>
+                  <div>
+                    <%= link_to 'Cover Letter', url_for(application.cover_letter), download: application.cover_letter.filename.to_s, class:"hover:text-primary-orange" %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="flex justify-center mt-2">
+                <button class="p-2 w-1/2 rounded-2xl text-xs text-gray-300 hover:text-primary-orange bg-custom-blue">
+                  <%= link_to "Job Details", job_path(application.job), data: { turbo_method: :get } %>
+                </button>
+              </div>
             </div>
-          <% else %>
-            <div>Resume not available</div>
-          <% end %>
-
-          <% if application.cover_letter.present? %>
-            <div>
-              <%= link_to 'Download Cover Letter', url_for(application.cover_letter), download: application.cover_letter.filename.to_s %>
-            </div>
-          <% else %>
-            <div>Cover letter not available</div>
           <% end %>
         </div>
-      <% end %>
+      </div>
     <% end %>
+
   <% else %>
-    <div class="w-screen mx-auto pt-20 content-center text-3xl text-center">
+    <div class="w-screen mx-auto pt-20 content-center text-3xl text-center text-gray-300">
       <h1>No sent applications to show,<br> <%= link_to "Browse", jobs_path, data: { turbo_method: :get }, class: "text-primary-orange hover:text-gray-300" %> jobs to find your next experience opportunity!</h1>
     </div>
   <% end %>
