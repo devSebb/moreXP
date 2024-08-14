@@ -1,9 +1,6 @@
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-3/4 pt-5 mx-auto" >
   <% @jobs.each do |job| %>
-    <div class="flex flex-col place-content-between p-2 rounded-lg h-[25vh]"
-     data-controller="job-card-color"
-     data-job-card-color-target="jobCard"
-     data-job-card-color="<%= job.industry %>"
+    <div class="flex flex-col place-content-between p-2 rounded-lg h-[25vh]" style="background-color: <%= Job::INDUSTRY_COLORS[job.industry] %>"
      >
       <div class="flex flex-row justify-between">
         <div class="text-sm"><%= job.created_at.strftime("%b %d, %Y") %></div>

@@ -9,9 +9,7 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-3/4 pt-5 mx-auto">
   <% @bookmarks.each do |bookmark| %>
     <div class="flex flex-col place-content-between p-2 rounded-lg h-[25vh]"
-     data-controller="job-card-color"
-     data-job-card-color-target="jobCard"
-     data-job-card-color="<%= bookmark.job.industry %>"
+     style="background-color: <%= Job::INDUSTRY_COLORS[bookmark.job.industry] %>"
     >
       <div class="flex flex-row justify-between">
         <div class="text-sm"><%= bookmark.created_at.strftime("%b %d, %Y") %></div>
