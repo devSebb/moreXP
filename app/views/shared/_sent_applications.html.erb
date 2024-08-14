@@ -3,7 +3,7 @@
   <div class="font-semibold text-3xl text-gray-300 z-20 mx-36">Sent Applications</div>
     <% @applications.each do |application| %>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-3/4 pt-5 mx-auto">
-        <div class="flex flex-col place-content-between p-2 bg-green-100 rounded-lg h-fit" style="color: rgb(4, 39, 62)">
+        <div class="flex flex-col place-content-between p-2 bg-green-100 rounded-lg h-fit" style="background-color: <%= Job::INDUSTRY_COLORS[application.job.industry] %>">
           <% if application.applied_to? && user_signed_in? %>
             <div class="">
               <% if application.job.present? %>

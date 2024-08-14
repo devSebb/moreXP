@@ -17,6 +17,19 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
   end
 
+  def edit
+    @job = Job.find(params[:id])
+  end
+
+  def update
+    @job = Job.find(params[:id])
+    if @job.update(job_params)
+      redirect_to @job, notice: 'Job was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   def create
     @job = Job.new(job_params)
     @job.user = current_user
@@ -30,6 +43,13 @@ class JobsController < ApplicationController
   def created
     @jobs = Job.where(user_id: current_user.id)
     @applications = Application.where(job_id: @jobs.pluck(:id))
+  end
+
+  def destroy
+    @job = Job.find(params[:id])
+    @job.destroy
+    flash[:notice] = 'Job was successfully deleted.'
+    redirect_to jobs_path, status: :see_other
   end
 
 

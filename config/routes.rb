@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  resources :jobs, only: %i[index new create show] do
+  resources :jobs, only: %i[index new create show edit update destroy] do
     collection do
       get 'created'
     end

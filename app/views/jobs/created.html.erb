@@ -1,11 +1,21 @@
 
-<div class="flex flex-row my-4 w-full justify-between mx-20">
+<div class="flex flex-row my-4 w-full justify-between">
   <div class="flex flex-col p-4 text-white w-1/2">
-    <h1 class="text-2xl my-4 pb-2 border-b-2 border-primary-orange w-1/2">Your posted jobs</h1>
+    <h1 class="text-2xl mb-5 pb-2 border-b-2 border-primary-orange w-3/4 text-center mx-auto">Your posted jobs</h1>
     <% if @jobs.any? %>
-      <ul class="space-y-4">
+      <ul class="space-y-4 mx-auto">
         <% @jobs.each do |job| %>
-          <li><%= job.title %> </li>
+          <div class="flex flex-row justify-between space-x-12">
+            <li><%= job.title %> </li>
+            <div class="flex flex-row gap-4">
+              <%= link_to edit_job_path(job), class: "h-5" do %>
+                <%= image_tag "pencil_icon.svg", data: { turbo_method: :patch }, size: "20x20", alt: "Pencil Icon" %>
+              <% end %>
+              <%= link_to job_path(job), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "h-5" do %>
+                <%= image_tag "trash_icon.svg", size: "18x18", alt: "Trash Icon" %>
+              <% end %>
+            </div>
+          </div>
         <% end %>
       </ul>
     <% else %>
@@ -13,13 +23,14 @@
     <% end %>
   </div>
 
-  <div class="flex flex-col p-4 text-white w-1/2">
-    <h1 class="text-2xl my-4 pb-2 border-b-2 border-primary-orange w-1/2">Received applications</h1>
+  <div class="flex flex-col p-4 text-white w-1/2 ">
+    <h1 class="text-2xl mb-5 pb-2 border-b-2 border-primary-orange w-3/4 text-center mx-auto">Received applications</h1>
     <% if @applications.any? %>
     <ul>
       <% @applications.each do |application| %>
-      <div class="px-2 py-1 rounded-lg border border-white w-3/4 mb-2">
+      <div class="px-2 py-1 rounded-lg border border-white w-3/4 mb-2 mx-auto">
         <li><%= application.job.title %></li>
+        <div class="text-xs mb-2 font-light">Applied on: <%= application.created_at.strftime("%b %d, %Y") %></div>
         <li>Applicant name: <%= application.job.user.name %></li>
         <li>Applicant email: <%= application.job.user.email %></li>
         <div class="text-xs mt-2 font-light text-primary-orange">Download:</div>

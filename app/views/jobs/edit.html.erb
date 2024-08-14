@@ -1,0 +1,100 @@
+<div class="flex items-center justify-center p-12">
+  <div class="mx-auto w-2/5">
+    <%= form_with(model: @job, url: job_path(@job), method: :patch) do |form| %>
+      <div class="-mx-3 flex flex-wrap">
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <%= form.label :title, "Job Title *", class: "mb-3 block text-base font-medium text-gray-300" %>
+            <%= form.text_field :title, placeholder: "Job Title", class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+          </div>
+        </div>
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <%= form.label :company_name, "Company Name *", class: "mb-3 block text-base font-medium text-gray-300" %>
+            <%= form.text_field :company_name, placeholder: "Company Name", class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-5">
+        <%= form.label :description, "Detailed job description *", class: "mb-3 block text-base font-medium text-gray-300" %>
+        <%= form.text_area :description, placeholder: "Enter details about the job", class: "w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+      </div>
+
+      <div class="-mx-3 flex flex-wrap">
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <%= form.label :start_date, "Start Date", class: "mb-3 block text-base font-medium text-gray-300" %>
+            <%= form.date_field :start_date, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+          </div>
+        </div>
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <%= form.label :end_date, "End Date", class: "mb-3 block text-base font-medium text-gray-300" %>
+            <%= form.date_field :end_date, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-5">
+        <%= form.label :price, "Price per month or job *", class: "mb-3 block text-base font-medium text-gray-300" %>
+        <%= form.text_field :price, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md", placeholder:"$" %>
+      </div>
+
+      <div class="mb-5">
+        <%= form.label :location, "Location *", class: "mb-3 block text-base font-medium text-gray-300" %>
+        <%= form.text_field :location, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+      </div>
+
+      <div data-controller="industry-dropdown">
+        <%= form.label :industry, "Industry *", class: "mb-3 block text-base font-medium text-gray-300" %>
+        <!-- Dropdown Button -->
+        <button
+          class="flex justify-between w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+          type="button"
+          data-dropdown-toggle="industry-dropdown"
+        >
+          <span data-industry-dropdown-target="output"><%= @job.industry || "Select an Industry" %></span>
+          <svg class="w-2.5 h-2.5 items-center align-middle my-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+          </svg>
+        </button>
+        <!-- Dropdown menu -->
+        <div
+          data-industry-dropdown-target="selected"
+          id="industry-dropdown"
+          class="z-10 hidden bg-white divide-x divide-gray-300 rounded-lg shadow w-2/5 dark:bg-gray-700"
+        >
+          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+            <li>
+              <a href="#" data-value="Software Development" data-action="click->industry-dropdown#selectItem" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Software Development</a>
+            </li>
+            <li>
+              <a href="#" data-value="Finance & Accounting" data-action="click->industry-dropdown#selectItem" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Finance & Accounting</a>
+            </li>
+            <li>
+              <a href="#" data-value="Architecture" data-action="click->industry-dropdown#selectItem" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Architecture</a>
+            </li>
+            <li>
+              <a href="#" data-value="Marketing & Graphic Design" data-action="click->industry-dropdown#selectItem" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Marketing & Graphic Design</a>
+            </li>
+            <li>
+              <a href="#" data-value="Photography" data-action="click->industry-dropdown#selectItem" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Photography</a>
+            </li>
+            <li>
+              <a href="#" data-value="Fashion" data-action="click->industry-dropdown#selectItem" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Fashion</a>
+            </li>
+            <li>
+              <a href="#" data-value="Video & Film" data-action="click->industry-dropdown#selectItem" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Video & Film</a>
+            </li>
+          </ul>
+        </div>
+        <%= form.hidden_field :industry, id: "industry-hidden-field" %>
+      </div>
+
+      <button class="rounded-md py-3 px-8 mt-5 text-center font-semibold text-gray-100 bg-primary-orange w-full">
+        <%= form.submit "Update Job", class: "hover:cursor-pointer" %>
+      </button>
+    <% end %>
+  </div>
+</div>

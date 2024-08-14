@@ -1,6 +1,7 @@
 class Job < ApplicationRecord
   validates :title, :description, :company_name, :location, :price, :industry, presence: true
-  has_many :applications
+  has_many :applications, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   belongs_to :user
 
   INDUSTRY_COLORS = {
