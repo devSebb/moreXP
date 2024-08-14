@@ -6,6 +6,10 @@
 
     <div class="space-y-2">
       <div class="field text-gray-300">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"w-full rounded-lg text-gray-900"  %>
+      </div>
+      <div class="field text-gray-300">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"w-full rounded-lg text-gray-900"  %>
       </div>

@@ -1,6 +1,6 @@
 <nav class="border-b-2 rounded-b-3xl px-6 py-6 text-gray-300 z-0" style="background-color: rgb(55, 97, 125); border: 1px solid rgb(55, 97, 125);">
   <div class="flex justify-between mx-auto">
-    <%= link_to "Browse", jobs_path, data: { turbo_method: :get }, class:"hover:text-primary-orange ml-5 text-lg" %>
+    <%= link_to "Browse", jobs_path, data: { turbo_method: :get }, class:"hover:text-primary-orange ml-5 text-lg mt-1" %>
     <ul class="flex flex-row justify-between space-x-2 ">
       <% if user_signed_in? %>
         <ul class="flex flex-row justify-between space-x-2 items-center">

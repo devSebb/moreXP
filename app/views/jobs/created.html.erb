@@ -1,0 +1,49 @@
+
+<div class="flex flex-row my-4 w-full justify-between mx-20">
+  <div class="flex flex-col p-4 text-white w-1/2">
+    <h1 class="text-2xl my-4 pb-2 border-b-2 border-primary-orange w-1/2">Your posted jobs</h1>
+    <% if @jobs.any? %>
+      <ul class="space-y-4">
+        <% @jobs.each do |job| %>
+          <li><%= job.title %> </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>You have not created any jobs yet.</p>
+    <% end %>
+  </div>
+
+  <div class="flex flex-col p-4 text-white w-1/2">
+    <h1 class="text-2xl my-4 pb-2 border-b-2 border-primary-orange w-1/2">Received applications</h1>
+    <% if @applications.any? %>
+    <ul>
+      <% @applications.each do |application| %>
+      <div class="px-2 py-1 rounded-lg border border-white w-3/4 mb-2">
+        <li><%= application.job.title %></li>
+        <li>Applicant name: <%= application.job.user.name %></li>
+        <li>Applicant email: <%= application.job.user.email %></li>
+        <div class="text-xs mt-2 font-light text-primary-orange">Download:</div>
+       <div class="flex justify-between text-sm">
+          <% if application.resume.present? %>
+            <div>
+              <%= link_to 'Resume', url_for(application.resume), download: application.resume.filename.to_s, class:"hover:text-primary-orange" %>
+            </div>
+          <% end %>
+          <% if application.cover_letter.present? %>
+            <div>
+              <%= link_to 'Cover Letter', url_for(application.cover_letter), download: application.cover_letter.filename.to_s, class:"hover:text-primary-orange mr-20" %>
+            </div>
+          <% end %>
+        </div>
+        <% if application.personal_message.present? %>
+        <div class="text-xs mt-2 font-light text-primary-orange">Personal message:</div>
+          <div class="text-sm"><%= application.personal_message %></div>
+        <% end %>
+      </div>
+      <% end %>
+    </ul>
+      <% else %>
+      <p>You have not received any applications</p>
+      <% end %>
+  </div>
+</div>

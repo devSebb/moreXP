@@ -12,7 +12,14 @@ module.exports = {
     extend: {
       colors: {
         'primary-orange': '#F59033',
-        'custom-blue': 'rgb(4, 39, 62)'
+        'custom-blue': 'rgb(4, 39, 62)',
+        // 'yellow': '#FDE047',
+        // 'blue': '#3B82F6',
+        // 'green': '#34D399',
+        // 'red': '#F87171',
+        // 'sky': '#60A5FA',
+        // 'indigo': '#6366F1',
+        // 'cyan': '#22D3EE'
       },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],

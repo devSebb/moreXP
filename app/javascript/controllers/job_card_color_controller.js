@@ -15,15 +15,15 @@ export default class extends Controller {
     });
   }
 
-   industryToColor(industry) {
+  industryToColor(industry) {
     const baseColor = {
       "Software Development": "yellow",
       "Finance & Accounting": "blue",
       "Architecture": "green",
-      "Marketing & Graphic Design": "purple",
-      "Photography": "orange",
-      "Video & Film": "teal",
-      "Fashion": "red"
+      "Marketing & Graphic Design": "red",
+      "Photography": "sky",
+      "Video & Film": "indigo",
+      "Fashion": "cyan"
     };
 
     const color = baseColor[industry] || "yellow";

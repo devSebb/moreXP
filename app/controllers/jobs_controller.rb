@@ -27,6 +27,11 @@ class JobsController < ApplicationController
     end
   end
 
+  def created
+    @jobs = Job.where(user_id: current_user.id)
+    @applications = Application.where(job_id: @jobs.pluck(:id))
+  end
+
 
   private
 
