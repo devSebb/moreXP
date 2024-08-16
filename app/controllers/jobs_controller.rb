@@ -7,6 +7,9 @@ class JobsController < ApplicationController
     if params[:location].present?
       @jobs = @jobs.where("location ILIKE ?", "%#{params[:location]}%")
     end
+    if params[:industry].present?
+      @jobs = @jobs.where("industry ILIKE ?", "%#{params[:industry]}%")
+    end
   end
 
   def new
