@@ -116,7 +116,3 @@ For Sent Applications OG
         </div>
       </div>
 \
-
-
-///////
-bg-gradient-to-b from-custom-blue via-slate-500 to-slate-300 z-30 rounded-b-3xl

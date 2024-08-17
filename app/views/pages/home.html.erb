@@ -1,11 +1,12 @@
 <%# Hero %>
-<section class="bg-transparent">
-  <%= image_tag("Scribble arrow.svg", class: "absolute transform h-[160px] right-48 top-[420px] rotate-[30deg]", alt: "Scribble") %>
-  <%= image_tag("Scribble.svg", class: "absolute transform h-[140px] left-16 top-28 z-0 ", alt: "Scribble 2") %>
-  <%= image_tag("Side Head Lightbulb.svg", class: "absolute transform h-[120px] left-40 top-[450px] z-0 -rotate-[60deg]", alt: "Exclamation Head") %>
-  <%= image_tag("Hand Drawn Bars Graphic.svg", class: "absolute transform h-[100px] right-10 top-40 z-0", alt: "BarChart") %>
-    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center my-28">
-        <h1 class="mb-4 font-extrabold tracking-tight leading-none text-gray-300 text-7xl z-2">It’s time to level up</h1>
+<section>
+  <%#= image_tag("Scribble arrow.svg", class: "absolute transform h-[160px] right-48 top-[420px] rotate-[30deg]", alt: "Scribble") %>
+  <%#= image_tag("Scribble.svg", class: "absolute transform h-[140px] left-16 top-28 z-0 ", alt: "Scribble 2") %>
+  <%#= image_tag("Side Head Lightbulb.svg", class: "absolute transform h-[120px] left-40 top-[450px] z-0 -rotate-[60deg]", alt: "Exclamation Head") %>
+  <%#= image_tag("Hand Drawn Bars Graphic.svg", class: "absolute transform h-[100px] right-10 top-40 z-0", alt: "BarChart") %>
+    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center mt-28">
+        <h1 class="gradient-text mb-4 font-extrabold tracking-tight leading-none text-7xl">It’s time to level up</h1>
+
         <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl px-60">Its impossible to find a job without experience. It's impossible to get experience without a job.<br> We're here to help you break into the industry.</p>
         <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
             <a href="<%= new_user_session_path %>" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-orange hover:bg-orange-400 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
@@ -21,23 +22,33 @@
     </div>
 </section>
 <%# Steps %>
+
+
 <section>
-  <div class="flex mt-36 mb-40 h-fit">
-    <%= image_tag("Arrow_Up_L.png", class: "absolute transform h-[340px] right-[40px] top-[820px] z-0", alt: "Arrow Up") %>
-    <%= image_tag("Atom_Sphere_1__L.png", class: "absolute top-[600px] transform h-[400px] z-0 rotate-[30deg]", alt: "Arrow Up")  %>
-    <div class="flex flex-col  justify-between w-full">
-      <%# Step 1 %>
-      <div class="w-1/2 flex flex-row items-end ml-[420px] my-20">
-        <h1 class="text-4xl text-right font-special text-primary-orange">Browse through hundreds of professional experiences</h1>
-      </div>
-      <%# Step 2 %>
-      <div class="flex bg-transparent rounded-2xl w-1/2 items-center ml-20 my-20">
-        <h1 class="text-4xl text-start font-special text-primary-orange">Apply to the top experiences to impulse your career</h1>
-      </div>
-      <%# Step 3 %>
-      <div class="flex bg-transparent rounded-2xl w-2/3 items-center mx-auto mt-20">
-        <h1 class="text-4xl text-center font-special text-primary-orange ">Level yourself up and break into the industry</h1>
-      </div>
+  <div class="mb-40 mx-10">
+    <div class="flex flex-col w-full">
+        <%# Step 1 %>
+        <div class="flex flex-row items-center">
+          <div class="radial-bg w-3/5 h-[600px] flex items-center justify-center">
+            <%= image_tag("Atom_Sphere_1__L.png", class: "h-[400px] rotate-[30deg]", alt: "Arrow Up") %>
+          </div>
+          <div class="w-1/2">
+            <h1 class="text-4xl text-center font-special text-primary-orange">Browse through hundreds of professional experiences</h1>
+          </div>
+        </div>
+        <%# Step 2 %>
+        <div class="flex flex-row items-center">
+          <div class="w-1/2">
+            <h1 class="text-4xl text-center font-special text-primary-orange">Apply to the top experiences to impulse your career</h1>
+          </div>
+          <div class="radial-bg w-3/5 h-[500px] flex items-center justify-center">
+             <%= image_tag("Arrow_Up_L.png", class: "h-[340px] ", alt: "Arrow Up") %>
+          </div>
+        </div>
+        <%# Step 3 %>
+        <div class="flex w-2/3 items-center mx-auto mt-20">
+          <h1 class="text-4xl text-center font-special text-primary-orange ">Level yourself up and break into the industry</h1>
+        </div>
     </div>
   </div>
 </section>

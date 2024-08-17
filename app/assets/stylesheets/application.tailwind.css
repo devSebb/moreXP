@@ -11,3 +11,16 @@
 }
 
 */
+
+@layer utilities {
+  .gradient-text {
+    background: radial-gradient(at left bottom, #f8d8ba, #F59033, rgb(255, 245, 241));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .radial-bg {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: radial-gradient(at 49.78% 50.50%, rgb(244, 122, 35) 0, transparent 70%);
+  }
+}
