@@ -1,9 +1,5 @@
 <%# Hero %>
 <section>
-  <%#= image_tag("Scribble arrow.svg", class: "absolute transform h-[160px] right-48 top-[420px] rotate-[30deg]", alt: "Scribble") %>
-  <%#= image_tag("Scribble.svg", class: "absolute transform h-[140px] left-16 top-28 z-0 ", alt: "Scribble 2") %>
-  <%#= image_tag("Side Head Lightbulb.svg", class: "absolute transform h-[120px] left-40 top-[450px] z-0 -rotate-[60deg]", alt: "Exclamation Head") %>
-  <%#= image_tag("Hand Drawn Bars Graphic.svg", class: "absolute transform h-[100px] right-10 top-40 z-0", alt: "BarChart") %>
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center mt-28">
         <h1 class="gradient-text mb-4 font-extrabold tracking-tight leading-none text-7xl">It’s time to level up</h1>
 
@@ -30,7 +26,8 @@
         <%# Step 1 %>
         <div class="flex flex-row items-center">
           <div class="radial-bg w-3/5 h-[600px] flex items-center justify-center">
-            <%= image_tag("Atom_Sphere_1__L.png", class: "h-[400px] rotate-[30deg]", alt: "Arrow Up") %>
+            <%#= image_tag("Atom_Sphere_1__L.png", class: "h-[400px] rotate-[30deg]", alt: "Arrow Up") %>
+            <%= render "shared/letterize" %>
           </div>
           <div class="w-1/2">
             <h1 class="text-4xl text-center font-special text-primary-orange">Browse through hundreds of professional experiences</h1>
@@ -52,5 +49,6 @@
     </div>
   </div>
 </section>
+
 
 <%= render "shared/footer" %>

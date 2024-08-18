@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_01_055930) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_18_080355) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,7 +99,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_01_055930) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "applications", "jobs"
   add_foreign_key "applications", "users"
-  add_foreign_key "bookmarks", "jobs"
+  add_foreign_key "bookmarks", "jobs", on_delete: :cascade
   add_foreign_key "bookmarks", "users"
   add_foreign_key "jobs", "users"
 end

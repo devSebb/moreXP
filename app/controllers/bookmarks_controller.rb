@@ -12,7 +12,7 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    @job = Job.find_by(id: params[:job_id]) # Ensure this is correctly used
+    @job = Job.find_by(id: params[:job_id])
     if @job
       bookmark = current_user.bookmarks.find_by(job: @job)
       bookmark&.destroy
