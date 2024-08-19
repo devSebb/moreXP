@@ -12,7 +12,8 @@ module.exports = {
     extend: {
       colors: {
         'primary-orange': '#F59033',
-        'custom-blue': 'rgb(4, 39, 62)',
+        'custom-blue': '#04273e',
+        'custom-light-blue': 'rgb(55, 97, 125)'
       },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
