@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
 
   root to: "pages#home"
 
@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     end
     resources :applications, only: [:create, :index]
   end
-
 
   resources :bookmarks, only: [:index, :create] do
     delete 'remove/:job_id', to: 'bookmarks#destroy', as: :remove

@@ -10,6 +10,7 @@ class JobsController < ApplicationController
     if params[:industry].present?
       @jobs = @jobs.where("industry ILIKE ?", "%#{params[:industry]}%")
     end
+    @jobs = @jobs.where("price <= ?", params[:price_range].to_i) if params[:price_range].present?
   end
 
   def new
