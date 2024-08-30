@@ -4,6 +4,7 @@ ruby "3.1.2"
 gem "devise"
 gem 'pdf-reader', '~> 2.12'
 gem 'anime-rails', '~> 3.2', '>= 3.2.1.2'
+gem 'cancancan'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.3"
@@ -73,3 +74,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "noticed", "~> 2.4"

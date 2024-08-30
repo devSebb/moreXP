@@ -12,13 +12,11 @@ Rails.application.routes.draw do
     resources :applications, only: [:create, :index]
   end
 
-  resources :bookmarks, only: [:index, :create] do
-    delete 'remove/:job_id', to: 'bookmarks#destroy', as: :remove
-  end
+  resources :bookmarks, only: [:index, :create, :destroy]
 
   resources :applications, only: [:index, :create, :show]
 
-  resources :users, only: [:show, :update, :edit]
+  resources :users, only: [:show, :update, :edit, :destroy]
 
   get "up" => "rails/health#show", as: :rails_health_check
 end

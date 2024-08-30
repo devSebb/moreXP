@@ -14,6 +14,15 @@
         <%= f.text_field :location, autofocus: true, autocomplete: "preffered location", class:"w-full rounded-lg text-gray-900"  %>
       </div>
       <div class="field text-gray-300">
+        <%= f.label :role %><br />
+        <div class="flex space-x-4">
+          <%= f.radio_button :role, 'customer', class: "mr-2" %>
+          <%= f.label :role_customer, 'Customer', class: "mr-4" %>
+          <%= f.radio_button :role, 'employer', class: "mr-2" %>
+          <%= f.label :role_employer, 'Employer' %>
+        </div>
+      </div>
+      <div class="field text-gray-300">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"w-full rounded-lg text-gray-900"  %>
       </div>

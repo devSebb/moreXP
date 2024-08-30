@@ -87,6 +87,7 @@ GEM
     bootsnap (1.18.3)
       msgpack (~> 1.2)
     builder (3.3.0)
+    cancancan (3.6.1)
     capybara (3.40.0)
       addressable
       matrix
@@ -165,6 +166,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
+    noticed (2.4.1)
+      rails (>= 6.1.0)
     orm_adapter (0.5.0)
     pdf-reader (2.12.0)
       Ascii85 (~> 1.0)
@@ -295,12 +298,14 @@ PLATFORMS
 DEPENDENCIES
   anime-rails (~> 3.2, >= 3.2.1.2)
   bootsnap
+  cancancan
   capybara
   debug
   devise
   error_highlight (>= 0.4.0)
   importmap-rails
   jbuilder
+  noticed (~> 2.4)
   pdf-reader (~> 2.12)
   pg (~> 1.1)
   puma (>= 5.0)

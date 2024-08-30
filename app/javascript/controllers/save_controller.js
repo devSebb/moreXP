@@ -41,7 +41,7 @@ export default class extends Controller {
 
   async removeJobFromBookmarks(jobId) {
     try {
-      const response = await fetch(`/bookmarks/${this.bookmarkId}/remove/${jobId}`, {
+      const response = await fetch(`/bookmarks/${jobId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

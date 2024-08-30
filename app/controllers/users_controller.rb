@@ -16,6 +16,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to user_path(current_user), notice: 'User was successfully deleted.'
+  end
+
   private
 
   def set_user
@@ -26,4 +32,9 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :location, :password, :password_confirmation, :current_password)
   end
 
+  def require_admin
+    unless current_user.admin?
+      redirect_to root_path, alert: 'You are not authorized to perform this action.'
+    end
+  end
 end

@@ -1,3 +1,26 @@
+<% if current_user.employer? %>
+  <div class="flex items-center justify-between text-white mx-auto mt-6 p-6 w-3/4">
+    <div class="flex items-center space-x-4">
+      <div class="flex items-center justify-center border-gray-300 hover:border-primary-orange border-2 rounded-full p-2 w-20 h-20">
+        <% if current_user.photo.attached? %>
+          <%= image_tag current_user.photo, class: "w-full h-full object-cover rounded-full" %>
+        <% else %>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 448 512">
+            <path fill="#d1d5db" d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z"/>
+          </svg>
+        <% end %>
+      </div>
+      <div class="flex flex-col">
+        <div class="text-xl font-semibold"><%= current_user.name %></div>
+        <div class="text-sm"><%= current_user.email %></div>
+        <div class="text-sm"><%= current_user.location %></div>
+      </div>
+    </div>
+    <button class="p-2 rounded-lg text-gray-300 border border-primary-orange hover:bg-primary-orange ease-in-out duration-300">
+      <%= link_to "Edit Profile", edit_user_registration_path, data: { turbo_method: :get } %>
+    </button>
+  </div>
+<% end %>
 
 <div class="flex flex-row my-4 w-full justify-between">
   <div class="flex flex-col p-4 text-white w-1/2">
@@ -19,42 +42,47 @@
         <% end %>
       </ul>
     <% else %>
-      <p>You have not created any jobs yet.</p>
+      <div class="flex flex-col items-center">
+        <p class="text-center">You have not created any jobs yet.</p>
+        <div class="hover:text-primary-orange border border-primary-orange rounded-lg p-2 my-4">
+          <%= link_to "New Job", new_job_path, data: { turbo_method: :get } %>
+        </div>
+      </div>
     <% end %>
   </div>
 
   <div class="flex flex-col p-4 text-white w-1/2 ">
     <h1 class="text-2xl mb-5 pb-2 border-b-2 border-primary-orange w-3/4 text-center mx-auto">Received applications</h1>
     <% if @applications.any? %>
-    <ul>
-      <% @applications.each do |application| %>
-      <div class="px-2 py-1 rounded-lg border border-white w-3/4 mb-2 mx-auto">
-        <li><%= application.job.title %></li>
-        <div class="text-xs mb-2 font-light">Applied on: <%= application.created_at.strftime("%b %d, %Y") %></div>
-        <li>Applicant name: <%= application.job.user.name %></li>
-        <li>Applicant email: <%= application.job.user.email %></li>
-        <div class="text-xs mt-2 font-light text-primary-orange">Download:</div>
-       <div class="flex justify-between text-sm">
-          <% if application.resume.present? %>
-            <div>
-              <%= link_to 'Resume', url_for(application.resume), download: application.resume.filename.to_s, class:"hover:text-primary-orange" %>
+      <ul>
+        <% @applications.each do |application| %>
+          <div class="px-2 py-1 rounded-lg border border-white w-3/4 mb-2 mx-auto">
+            <li><%= application.job.title %></li>
+            <div class="text-xs mb-2 font-light">Applied on: <%= application.created_at.strftime("%b %d, %Y") %></div>
+            <li>Applicant name: <%= application.job.user.name %></li>
+            <li>Applicant email: <%= application.job.user.email %></li>
+            <div class="text-xs mt-2 font-light text-primary-orange">Download:</div>
+            <div class="flex justify-between text-sm">
+              <% if application.resume.present? %>
+                <div>
+                  <%= link_to 'Resume', url_for(application.resume), download: application.resume.filename.to_s, class:"hover:text-primary-orange" %>
+                </div>
+              <% end %>
+              <% if application.cover_letter.present? %>
+                <div>
+                  <%= link_to 'Cover Letter', url_for(application.cover_letter), download: application.cover_letter.filename.to_s, class:"hover:text-primary-orange mr-20" %>
+                </div>
+              <% end %>
             </div>
-          <% end %>
-          <% if application.cover_letter.present? %>
-            <div>
-              <%= link_to 'Cover Letter', url_for(application.cover_letter), download: application.cover_letter.filename.to_s, class:"hover:text-primary-orange mr-20" %>
-            </div>
-          <% end %>
-        </div>
-        <% if application.personal_message.present? %>
-        <div class="text-xs mt-2 font-light text-primary-orange">Personal message:</div>
-          <div class="text-sm"><%= application.personal_message %></div>
+            <% if application.personal_message.present? %>
+              <div class="text-xs mt-2 font-light text-primary-orange">Personal message:</div>
+              <div class="text-sm"><%= application.personal_message %></div>
+            <% end %>
+          </div>
         <% end %>
-      </div>
-      <% end %>
-    </ul>
-      <% else %>
+      </ul>
+    <% else %>
       <p class="text-center">You have not received any applications</p>
-      <% end %>
+    <% end %>
   </div>
 </div>

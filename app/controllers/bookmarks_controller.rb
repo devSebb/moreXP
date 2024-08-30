@@ -7,18 +7,22 @@ class BookmarksController < ApplicationController
 
   def create
     @job = Job.find(params[:job_id])
-    current_user.bookmarks.find_or_create_by(job: @job)
-    redirect_to @job, notice: 'Bookmark added successfully.'
+    bookmark = current_user.bookmarks.find_or_create_by(job: @job)
+
+    if bookmark.persisted?
+      render json: { status: 'success', message: 'Bookmark added successfully.' }, status: :ok
+    else
+      render json: { status: 'error', message: 'Failed to add bookmark.' }, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @job = Job.find_by(id: params[:job_id])
-    if @job
-      bookmark = current_user.bookmarks.find_by(job: @job)
-      bookmark&.destroy
-      redirect_to @job, notice: 'Bookmark removed successfully.'
+    bookmark = current_user.bookmarks.find_by(job_id: params[:id])
+
+    if bookmark&.destroy
+      render json: { status: 'success', message: 'Bookmark removed successfully.' }, status: :ok
     else
-      redirect_to bookmarks_path, alert: 'Job not found.'
+      render json: { status: 'error', message: 'Failed to remove bookmark.' }, status: :unprocessable_entity
     end
   end
 end
