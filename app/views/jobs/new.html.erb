@@ -92,6 +92,44 @@
         <%= form.hidden_field :industry, id: "industry-hidden-field" %>
       </div>
 
+      <div data-controller="tags-dropdown" class="mb-5">
+        <%= form.label :tags, "Tags", class: "mb-3 block text-base font-medium text-gray-300" %>
+
+        <button
+          class="flex justify-between w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+          type="button"
+          data-action="click->tags-dropdown#toggleDropdown"
+        >
+          <span data-tags-dropdown-target="output">Select Tags</span>
+          <svg class="w-2.5 h-2.5 items-center align-middle my-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+          </svg>
+        </button>
+
+        <div
+          data-tags-dropdown-target="dropdown"
+          class="z-10 hidden bg-white divide-x divide-gray-300 rounded-lg shadow w-full dark:bg-gray-700"
+        >
+          <div class="p-3">
+            <% ["Remote", "Flexible", "Hybrid", "Shift-Work", "Full Time", "In-Person", "Project Work", "Part-Time"].uniq.each do |tag| %>
+              <div class="flex items-center mb-2">
+                <input
+                  id="tag-<%= tag.parameterize %>"
+                  type="checkbox"
+                  value="<%= tag %>"
+                  data-action="change->tags-dropdown#updateSelection"
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                >
+                <label for="tag-<%= tag.parameterize %>" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                  <%= tag %>
+                </label>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <%= form.hidden_field :tags, multiple: true, data: { tags_dropdown_target: "hiddenField" } %>
+      </div>
+
       <button class="rounded-md py-3 px-8 mt-5 text-center font-semibold text-gray-100 bg-primary-orange w-full">
         <%= form.submit "Submit", class: "hover:cursor-pointer" %>
         <%= form.hidden_field :user_id, value: current_user.id %>

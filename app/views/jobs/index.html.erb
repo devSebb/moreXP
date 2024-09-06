@@ -1,5 +1,6 @@
-<%# Top Filters %>
-<%= form_with url: jobs_path, method: :get, data: { controller: "price-range", price_range_target: "form" } do |f| %>
+<%# Combined Form for All Filters %>
+<%= form_with url: jobs_path, method: :get, data: { controller: "price-range", price_range_target: "form", turbo_frame: "jobs_list" } do |f| %>
+  <%# Top Filters %>
   <div class="mx-10 space-x-12 flex flex-row my-5">
     <div class="flex flex-row space-x-4 w-[200px]">
       <div class="border-gray-300 border-2 rounded-full px-2.5 content-center"><svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 512 512"><path fill="#d1d5db" d="M184 48l144 0c4.4 0 8 3.6 8 8l0 40L176 96l0-40c0-4.4 3.6-8 8-8zm-56 8l0 40L64 96C28.7 96 0 124.7 0 160l0 96 192 0 128 0 192 0 0-96c0-35.3-28.7-64-64-64l-64 0 0-40c0-30.9-25.1-56-56-56L184 0c-30.9 0-56 25.1-56 56zM512 288l-192 0 0 32c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32l0-32L0 288 0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-128z"/></svg></div>
@@ -71,29 +72,70 @@
       </div>
     </div>
   </div>
+
+  <%# Body Container %>
+  <div class="flex flex-row mx-10">
+    <%# Side filters %>
+    <div class="flex flex-col py-5 w-1/4 h-full">
+      <h1 class="text-white">Filters</h1>
+      <h2 class="text-gray-300 text-sm my-2 mt-6">Working Schedule</h2>
+      <ul class="text-white text-xs font-light space-y-3">
+        <li>
+          <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "full_time", nil %>
+          <label for="tags_full_time" class="ms-2 text-xs font-light text-gray-300">Full-Time</label>
+        </li>
+        <li>
+          <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "part_time", nil %>
+          <label for="tags_part_time" class="ms-2 text-xs font-light text-gray-300">Part-Time</label>
+        </li>
+        <li>
+          <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "project_work", nil %>
+          <label for="tags_project_work" class="ms-2 text-xs font-light text-gray-300">Project Work</label>
+        </li>
+        <li>
+          <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "shift_work", nil %>
+          <label for="tags_shift_work" class="ms-2 text-xs font-light text-gray-300">Shift Work</label>
+        </li>
+      </ul>
+      <h2 class="text-gray-300 text-sm my-2 mt-6">Employment Type</h2>
+      <div class="flex items-center mb-4">
+        <ul class="text-white text-xs font-light space-y-3">
+          <li>
+            <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "full_day", nil %>
+            <label for="tags_full_day" class="ms-2 text-xs font-light text-gray-300">Full Day</label>
+          </li>
+          <li>
+            <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "flexible", nil %>
+            <label for="tags_flexible" class="ms-2 text-xs font-light text-gray-300">Flexible</label>
+          </li>
+          <li>
+            <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "hybrid", nil %>
+            <label for="tags_hybrid" class="ms-2 text-xs font-light text-gray-300">Hybrid</label>
+          </li>
+          <li>
+            <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "in_person", nil %>
+            <label for="tags_in_person" class="ms-2 text-xs font-light text-gray-300">In-Person</label>
+          </li>
+          <li>
+            <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "remote", nil %>
+            <label for="tags_remote" class="ms-2 text-xs font-light text-gray-300">Remote</label>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <%# Job Cards and Pagination %>
+    <%= turbo_frame_tag "jobs_list" do %>
+      <div class="w-full">
+        <%= render 'shared/job_card', jobs: @jobs %>
+
+        <%# Pagination %>
+        <div class="mt-8 flex justify-center text-white">
+          <%= paginate @jobs %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
   <%= f.submit "Search", class: "hidden" %>
 <% end %>
-<%# Body Container %>
-<div class="flex flex-row mx-10">
-  <%# Side filters %>
-  <div class="flex flex-col py-5 w-1/4 h-full">
-    <h1 class="text-white">Filters</h1>
-    <h2 class="text-gray-300 text-sm my-2 mt-6">Working Schedule</h2>
-      <ul class="text-white text-xs font-light space-y-3">
-        <li><input id="full-time-checkbox" type="checkbox" value="Full Time" class="w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"><label for="full-time-checkbox" class="ms-2 text-xs font-light text-gray-300">Full Time</label></li>
-        <li><input id="part-time-checkbox" type="checkbox" value="Part Time" class="w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"><label for="part-time-checkbox" class="ms-2 text-xs font-light text-gray-300">Part Time</label></li>
-        <li><input id="project-work-checkbox" type="checkbox" value="Project Work" class="w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"><label for="project-work-checkbox" class="ms-2 text-xs font-light text-gray-300">Project Work</label></li>
-      </ul>
-    <h2 class="text-gray-300 text-sm my-2 mt-6">Employment Type</h2>
-    <div class="flex items-center mb-4">
-      <ul class="text-white text-xs font-light space-y-3">
-        <li><input id="full-day-checkbox" type="checkbox" value="Full Day" class="w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"><label for="full-day-checkbox" class="ms-2 text-xs font-light text-gray-300">Full Day</label></li>
-        <li><input id="flexible-checkbox" type="checkbox" value="Flexible" class="w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"><label for="flexible-checkbox" class="ms-2 text-xs font-light text-gray-300">Flexible</label></li>
-        <li><input id="shift-work-checkbox" type="checkbox" value="Shift Work" class="w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"><label for="shift-work-checkbox" class="ms-2 text-xs font-light text-gray-300">Shift Work</label></li>
-        <li><input id="remote-checkbox" type="checkbox" value="Remote" class="w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"><label for="remote-checkbox" class="ms-2 text-xs font-light text-gray-300">Remote</label></li>
-      </ul>
-    </div>
-  </div>
-  <%# Job Cards %>
-  <%= render 'shared/job_card', job: @job %>
-</div>

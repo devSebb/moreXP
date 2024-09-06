@@ -1,16 +1,22 @@
 class JobsController < ApplicationController
   def index
     @jobs = Job.all
-    if params[:title].present?
-      @jobs = Job.where("title ilike ? ", "%#{params[:title]}%")
+    @jobs = @jobs.where("title ILIKE ?", "%#{params[:title]}%") if params[:title].present?
+    @jobs = @jobs.where("location ILIKE ?", "%#{params[:location]}%") if params[:location].present?
+    @jobs = @jobs.where(industry: params[:industry]) if params[:industry].present?
+    @jobs = @jobs.where("price <= ?", params[:price_range]) if params[:price_range].present?
+
+    if params[:tags].present?
+      tags = Array(params[:tags]).reject(&:blank?)
+      @jobs = @jobs.where("tags && ARRAY[?]::text[]", tags) if tags.any?
     end
-    if params[:location].present?
-      @jobs = @jobs.where("location ILIKE ?", "%#{params[:location]}%")
+
+    @jobs = @jobs.page(params[:page]).per(12)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
     end
-    if params[:industry].present?
-      @jobs = @jobs.where("industry ILIKE ?", "%#{params[:industry]}%")
-    end
-    @jobs = @jobs.where("price <= ?", params[:price_range].to_i) if params[:price_range].present?
   end
 
   def new
@@ -37,6 +43,12 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.user = current_user
+
+    # Parse tags if present
+    if params[:job][:tags].present?
+      @job.tags = JSON.parse(params[:job][:tags])
+    end
+
     if @job.save
       redirect_to jobs_path, notice: 'Job created successfully.'
     else
