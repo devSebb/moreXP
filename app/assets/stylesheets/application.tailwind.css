@@ -2,22 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
-}
-
-*/
-
 @layer utilities {
+
+  #main-title {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  #main-title .char {
+    transform: translateY(115px);
+    transition: transform 0.5s;
+  }
   .gradient-text {
     background: radial-gradient(at left bottom, #f8d8ba, #F59033, rgb(255, 245, 241));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+  .gradient-svg {
+    fill: url(#plusGradient);
   }
   .radial-bg {
     background-color: rgba(0, 0, 0, 0);
@@ -304,7 +305,7 @@
       }
       .text {
         color: #04273e;
-        font-size: 19px;
+        /* font-size: 19px; */
         position: absolute;
         font-weight: 500;
       }

@@ -1,43 +1,41 @@
 <%# Hero %>
 <section>
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center mt-28">
-        <h1 class="gradient-text mb-4 font-extrabold tracking-tight leading-none text-7xl">It’s time to level up</h1>
-
-        <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl px-60">Its impossible to find a job without experience. It's impossible to get experience without a job.<br> We're here to help you break into the industry.</p>
+        <h1 id="main-title" class="gradient-text pb-4 font-extrabold tracking-tight leading-none text-7xl">It’s time to level up</h1>
+        <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl md:px-60">Its impossible to find a job without experience. It's impossible to get experience without a job.<br> We're here to help you break into the industry.</p>
         <div class="flex flex-row space-x-4 sm:flex-row sm:justify-center sm:space-y-0">
-          <%= render 'shared/button_animated', href: new_user_session_path, text: 'Get Started' %>
-          <%= render 'shared/button_animated', href: about_path, text: 'Learn More' %>
+          <%= render 'shared/button_animated', href: new_user_session_path, text: 'Get Started', custom_classes: 'text-lg' %>
+          <%= render 'shared/button_animated', href: about_path, text: 'Learn More', custom_classes: 'text-lg'   %>
         </div>
     </div>
 </section>
 <%# Steps %>
 
-
+<%# <%= image_tag "path.svg", alt: "path", id: "path", class: "absolute top-[700px] left-40 w-full h-full" %>
+<%#= image_tag "Side Head Lightbulb.svg", id: "side-head-light", alt: "text", class: " absolute h-20 w-20" %>
+  <%= image_tag "plus_icon.svg", id: "plus-icon", alt: "text", class: " h-36 w-36" %>
 <section>
   <div class="mb-40 mx-10">
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col w-full gap-24 md:gap-96">
         <%# Step 1 %>
-        <div class="flex flex-row items-center">
-          <div class="radial-bg w-3/5 h-[600px] flex items-center justify-center">
-            <%= render "shared/letterize" %>
+          <div class="w-3/4 mx-auto mt-24">
+            <h1 id="step-1-text" class="text-4xl md:text-5xl text-center font-special text-primary-orange">.</h1>
           </div>
-          <div class="w-1/2">
-            <h1 class="text-4xl text-center font-special text-primary-orange">Browse through hundreds of professional experiences</h1>
-          </div>
-        </div>
         <%# Step 2 %>
-        <div class="flex flex-row items-center">
-          <div class="w-1/2">
-            <h1 class="text-4xl text-center font-special text-primary-orange">Apply to the top experiences to impulse your career</h1>
-          </div>
-          <div class="radial-bg w-3/5 h-[500px] flex items-center justify-center">
-             <%= image_tag("Arrow_Up_L.png", class: "h-[340px] ", alt: "Arrow Up") %>
+          <div class="w-1/2 mx-auto">
+            <h1 id="step-2-text" class="text-4xl md:text-5xl text-center font-special text-primary-orange">.</h1>
           </div>
         </div>
         <%# Step 3 %>
-        <div class="flex w-2/3 items-center mx-auto mt-20">
-          <h1 class="text-4xl text-center font-special text-primary-orange ">Level yourself up and break into the industry</h1>
+        <div id="step-3" class="radial-bg flex w-full h-[400px] items-center justify-center mx-auto my-96 relative">
+          <h1 id="step-3-text" class="text-4xl text-center leading-normal font-special text-custom-blue absolute transform scale-0">.</h1>
         </div>
+          <div><%= image_tag "plus_icon.svg", id: "plus-icon-2", alt: "text", class: "h-36 w-36" %></div>
+      <div class="flex w-full mx-auto justify-center">
+        <button id="browse-jobs-button" class="animate-bounce">
+          <%= render 'shared/button_animated', href: jobs_path, text: 'Browse Jobs', custom_classes: 'text-2xl py-16 px-24 rounded-md'  %>
+        </button>
+      </div>
     </div>
   </div>
 </section>

@@ -26,7 +26,6 @@
         <div>
           <div class="text-xs">$<%= job.price %> /mo</div>
           <div class="text-xs"><%= job.location %></div>
-          <div class="text-xs"><%= job.tags.join(", ") %></div>
         </div>
         <button class="px-2 rounded-2xl text-xs text-gray-300 hover:text-primary-orange" style="background-color: rgb(4, 39, 62)">
           <%= link_to "Details", job_path(job), data: { turbo_method: :get } %>

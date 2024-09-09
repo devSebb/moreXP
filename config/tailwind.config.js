@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
+      },
       colors: {
         'primary-orange': '#F59033',
         'custom-blue': '#04273e',
