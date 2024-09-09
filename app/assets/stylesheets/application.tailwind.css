@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer utilities {
+  body {
+    zoom: 1.1;
+  }
 
   #main-title {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
