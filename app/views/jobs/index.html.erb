@@ -57,7 +57,7 @@
         <div class="relative">
           <%= f.range_field :price_range,
               min: 100, max: 1500, step: 100,
-              value: params[:price_range] || 1000,
+              value: params[:price_range] || 1500,
               data: {
                 price_range_target: "slider",
                 action: "input->price-range#updateDisplay change->price-range#submit"
@@ -68,7 +68,7 @@
           <span class="text-xs text-gray-500 dark:text-gray-400 absolute start-2/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">$1000</span>
           <span class="text-xs text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">Any</span>
         </div>
-        <%# <p class="mt-8 text-sm text-gray-300">Selected price: <span data-price-range-target="display"></span></p> %>
+        <p class="mt-8 text-sm text-gray-300 hidden">Selected price: <span data-price-range-target="display"></span></p>
       </div>
     </div>
   </div>
@@ -80,48 +80,28 @@
       <h1 class="text-white">Filters</h1>
       <h2 class="text-gray-300 text-md my-2 mt-6">Working Schedule</h2>
       <ul class="text-white text-sm font-light space-y-3">
-        <li>
-          <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "full_time", nil %>
-          <label for="tags_full_time" class="ms-2 text-sm font-light text-gray-300">Full-Time</label>
-        </li>
-        <li>
-          <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "part_time", nil %>
-          <label for="tags_part_time" class="ms-2 text-sm font-light text-gray-300">Part-Time</label>
-        </li>
-        <li>
-          <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "project_work", nil %>
-          <label for="tags_project_work" class="ms-2 text-sm font-light text-gray-300">Project Work</label>
-        </li>
-        <li>
-          <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "shift_work", nil %>
-          <label for="tags_shift_work" class="ms-2 text-sm font-light text-gray-300">Shift Work</label>
-        </li>
+        <% ["Full Time", "Part Time", "Project Work", "Shift Work"].each do |tag| %>
+          <li>
+            <%= check_box_tag "tags[]", tag, params[:tags]&.include?(tag),
+                id: "tags_#{tag.parameterize}",
+                class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600",
+                data: { action: "change->price-range#submit" } %>
+            <label for="tags_<%= tag.parameterize %>" class="ms-2 text-sm font-light text-gray-300"><%= tag %></label>
+          </li>
+        <% end %>
       </ul>
       <h2 class="text-gray-300 text-md my-2 mt-6">Employment Type</h2>
-      <div class="flex items-center mb-4">
-        <ul class="text-white text-sm font-light space-y-3">
+      <ul class="text-white text-sm font-light space-y-3">
+        <% ["Full Day", "Flexible", "Hybrid", "In-Person", "Remote"].each do |tag| %>
           <li>
-            <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "full_day", nil %>
-            <label for="tags_full_day" class="ms-2 text-sm font-light text-gray-300">Full Day</label>
+            <%= check_box_tag "tags[]", tag, params[:tags]&.include?(tag),
+                id: "tags_#{tag.parameterize}",
+                class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600",
+                data: { action: "change->price-range#submit" } %>
+            <label for="tags_<%= tag.parameterize %>" class="ms-2 text-sm font-light text-gray-300"><%= tag %></label>
           </li>
-          <li>
-            <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "flexible", nil %>
-            <label for="tags_flexible" class="ms-2 text-sm font-light text-gray-300">Flexible</label>
-          </li>
-          <li>
-            <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "hybrid", nil %>
-            <label for="tags_hybrid" class="ms-2 text-sm font-light text-gray-300">Hybrid</label>
-          </li>
-          <li>
-            <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "in_person", nil %>
-            <label for="tags_in_person" class="ms-2 text-sm font-light text-gray-300">In-Person</label>
-          </li>
-          <li>
-            <%= f.check_box :tags, { multiple: true, class: "w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", onchange: "this.form.requestSubmit();" }, "remote", nil %>
-            <label for="tags_remote" class="ms-2 text-sm font-light text-gray-300">Remote</label>
-          </li>
-        </ul>
-      </div>
+        <% end %>
+      </ul>
     </div>
 
     <%# Job Cards and Pagination %>

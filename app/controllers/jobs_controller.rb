@@ -7,8 +7,10 @@ class JobsController < ApplicationController
     @jobs = @jobs.where("price <= ?", params[:price_range]) if params[:price_range].present?
 
     if params[:tags].present?
-      tags = Array(params[:tags]).reject(&:blank?)
-      @jobs = @jobs.where("tags && ARRAY[?]::text[]", tags) if tags.any?
+      tags = Array(params[:tags]).reject(&:blank?).map { |tag| tag.split.map(&:capitalize).join(' ') }
+      tags.each do |tag|
+        @jobs = @jobs.where("? = ANY(tags)", tag)
+      end
     end
 
     @jobs = @jobs.page(params[:page]).per(12)

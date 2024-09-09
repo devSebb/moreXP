@@ -69,7 +69,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
         ease: "power1.inOut",
         scale: 0.5,
         opacity: 1,
-        duration: 2
+        duration: 3,
+        delay: 1
       });
     },
     onLeave: () => {

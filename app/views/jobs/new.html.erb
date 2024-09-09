@@ -111,14 +111,14 @@
           class="z-10 hidden bg-white divide-x divide-gray-300 rounded-lg shadow w-full dark:bg-gray-700"
         >
           <div class="p-3">
-            <% ["Remote", "Flexible", "Hybrid", "Shift-Work", "Full Time", "In-Person", "Project Work", "Part-Time"].uniq.each do |tag| %>
+            <% ["Remote", "Flexible", "Hybrid", "Shift Work", "Full Time", "In Person", "Project Work", "Part Time"].uniq.each do |tag| %>
               <div class="flex items-center mb-2">
                 <input
                   id="tag-<%= tag.parameterize %>"
                   type="checkbox"
                   value="<%= tag %>"
                   data-action="change->tags-dropdown#updateSelection"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                  class="w-4 h-4 text-primary-orange   bg-gray-100 border-gray-300 rounded focus:ring-primary-orange dark:focus:ring-primary-orange dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                 >
                 <label for="tag-<%= tag.parameterize %>" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                   <%= tag %>

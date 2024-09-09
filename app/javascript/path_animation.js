@@ -1,4 +1,8 @@
-gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
+document.addEventListener("DOMContentLoaded", (event) => {
+  gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
+  gsap.config({
+  nullTargetWarn: false
+});
 
 gsap.set("#plus-icon", {
   xPercent: 80,
@@ -47,4 +51,5 @@ gsap.to("#plus-icon-2", {
     scrub: 1,
     markers: false
   }
+});
 });
