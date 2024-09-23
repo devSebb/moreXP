@@ -1,0 +1,1 @@
+import"@hotwired/turbo-rails";import"controllers";import"flowbite";import"./home_animation";import"./path_animation";
