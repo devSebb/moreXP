@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", (event) => {
   gsap.registerPlugin(TextPlugin);
-  const title = document.getElementById("main-title");
+  const title = document.getElementById("main-title")
   const step3text = document.getElementById("step-3-text");
 
   // Title animation

@@ -5,7 +5,7 @@
         <div class="field text-gray-300">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"w-full rounded-lg text-gray-700" %>
-        </div>
+      </div>
         <div class="field text-gray-300">
           <%= f.label :password %><br />
           <%= f.password_field :password, autocomplete: "current-password" , class:"w-full rounded-lg  text-gray-700" %>
@@ -14,8 +14,8 @@
           <div class="field text-gray-300">
             <%= f.check_box :remember_me, class:"rounded-xl"%>
             <%= f.label :remember_me %>
-          </div>
-        <% end %>
+        </div>
+      <% end %>
       </div>
     <div class="actions bg-primary-orange w-1/2 rounded-lg text-center text-lg py-1 text-gray-700 mt-4 mb-2 mx-auto hover:text-gray-300">
       <%= f.submit "Log in" %>
