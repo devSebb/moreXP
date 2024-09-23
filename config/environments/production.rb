@@ -21,11 +21,11 @@ Rails.application.configure do
   # config.require_master_key = true
 
   # Enable serving static files from `public/`.
-  config.public_file_server.enabled = true
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :terser
-
+  # config.assets.css_compressor = :sass
 
   # Do not fall back to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
