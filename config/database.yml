@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: more_xp_production
-  username: more_xp
-  password: <%= ENV["MORE_XP_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
