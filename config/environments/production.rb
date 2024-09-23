@@ -23,8 +23,9 @@ Rails.application.configure do
   # Enable serving static files from `public/`.
   config.public_file_server.enabled = true
 
-  # Compress CSS using a preprocessor.
-  # config.assets.css_compressor = :sass
+  # Compress JavaScripts and CSS.
+  config.assets.js_compressor = :terser
+
 
   # Do not fall back to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
