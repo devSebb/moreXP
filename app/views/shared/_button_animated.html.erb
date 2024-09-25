@@ -2,15 +2,15 @@
   <div class="bottom"></div>
   <div class="cover cut"></div>
   <div class="text-container">
-    <div class="text text-dark <%= local_assigns[:custom_classes] %>"><%= text %></div>
+    <div class="text text-dark"><%= text %></div>
   </div>
   <div class="text-container cut">
-    <div class="text <%= local_assigns[:custom_classes] %>"><%= text %></div>
+    <div class="text"><%= text %></div>
   </div>
   <div class="overlay"></div>
 </a>
 
-<%# <script src="anime.min.js"></script> %>
+
 <script type="module">
     const bottom = document.querySelector(".bottom");
     const overlay = document.querySelector(".overlay");

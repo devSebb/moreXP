@@ -7,6 +7,12 @@ gem 'anime-rails', '~> 3.2', '>= 3.2.1.2'
 gem 'cancancan'
 gem 'kaminari'
 gem 'terser', '~> 1.2', '>= 1.2.3'
+gem "noticed", "~> 2.4"
+gem 'uglifier'
+
+group :production do
+  gem 'rails_12factor'
+end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.3"
@@ -76,5 +82,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
-gem "noticed", "~> 2.4"
