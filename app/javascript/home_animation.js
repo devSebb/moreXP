@@ -18,6 +18,26 @@ document.addEventListener("DOMContentLoaded", (event) => {
       });
     },
   });
+// Subtitle animation
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#subtitle-text",
+      start: "-1080% center",
+      end: "0 center",
+      scrub: true,
+      markers: true,
+      toggleActions: "play reverse play reverse"
+    }
+  });
+
+  tl.from("#subtitle-text", {
+    y: 100,
+    x: 800,
+    scale: 0.5,
+    duration: 3,
+    ease: "power1.inOut"
+  });
+
 
   // Step 1
   ScrollTrigger.create({
@@ -47,6 +67,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
         text: "Evolve Your Career with Hands-On Experience",
         ease: "power1.inOut",
         markers: false,
+        scrub: true,
+        toggleActions: "play reverse play reverse"
       })
     }
   })
@@ -96,3 +118,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
   });
 });
+
+// Smooth Scroll
+const lenis = new Lenis()
+
+lenis.on('scroll', (e) => {
+  console.log(e)
+})
+
+function raf(time) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+
+requestAnimationFrame(raf)
